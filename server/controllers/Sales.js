@@ -1,66 +1,33 @@
 import client from '../models/db';
+import queries from '../models/queries';
 
 const Sales = {
-    viewSalesById(req, res) {
-        const sales_id = parseInt(req.params.salesId, 10);
+    viewSalesById(req, res, next) {
         const token = parseInt(req.headers.token, 10);
-        const headerId = parseInt(req.headers.id, 10);
-        let thisSale;
+        
+        queries.getSalesById(req.params.salesId).then(sales => {
+            if (sales) {
+                if ((token === 1) || (sales.attendant_id === req.headers.id)) {
+                    return res.json(sales);
+                }
 
-        const query = {
-            text: 'SELECT * FROM sales WHERE id = $1',
-            values: [sales_id]
-        };
-
-        client.query(query, (err, result) => {
-            if (err) {
-                return res.status(404).send({
-                    success: false,
-                    message: 'Data cannot be loaded'
-                })
+                return res.status(401).json({
+                            message: 'Unathourized to view sales'
+                        })
             }
 
-            if (result.rows[0] === undefined) {
-                return res.status(404).send({
-                    success: false,
-                    message: `Sales with ID ${sales_id} not found`
-                })
-            }
+            next();
+        }) ;
 
-            thisSale = result.rows[0];
-
-            const thisSaleId = thisSale.attendant_id;
-
-            if ((token === 1) || (thisSaleId === headerId)) {
-                return res.status(200).send({
-                    success: true,
-                    message: 'Sales found',
-                    data: thisSale
-                })
-            }else {
-                res.status(401).send({
-                    success: false,
-                    message: 'Unauthorized to access route'
-                })
-            }
-
-        });
     },
 
-    viewSales(req, res) {
-        client.query('SELECT * FROM sales', (err, result) => {
-            if (err) {
-                return res.status(400).send({
-                    success: false,
-                    message: 'Sales records could not be retrieved',
-                })
+    viewSales(req, res, next) {
+        queries.getSales().then(sales => {
+            if(sales) {
+                return res.json(sales);
             }
 
-            res.status(200).send({
-                success: true,
-                message: 'Sales records retrieved successfully',
-                data: result.rows
-            })
+            next();
         })
     },
 
@@ -76,45 +43,19 @@ const Sales = {
         for (let i = 0; i < sales.length; i++) {
             products += sales[i].product + ', ';
             total += sales[i].price;
-        }
-
-        const query = {
-            text: 'INSERT INTO sales(attendant_id, attendant_email, date, products, total) VALUES($1, $2, $3, $4, $5)',
-            values: [attendant_id, attendant_email, date, products, total],
         };
 
-        client.query(query, (err, result) => {
-            if (err) {
-                return res.status(400).send({
-                    success: false,
-                    message: 'Sales could not be recorded',
-                })
-            }
+        const thisSale = {
+            attendant_id: attendant_id,
+            attendant_email: attendant_email,
+            products: products,
+            total: total,
+            date: date,
+        };
 
-            res.status(200).send({
-                success: true,
-                message: 'Sales recorded successfully',
-                data: [attendant_id, attendant_email, date, sales]
-            })
-        })
-
-        /*client.query('SELECT * FROM products', (err, result) => {
-            if (err) {
-                return res.status(400).send({
-                    success: false,
-                    message: 'Product could not be retrieved',
-                })
-            }
-
-            const products_data = result.rows;
-
-            res.status(200).send({
-
-                success: true,
-                message: 'Sales records retrieved successfully',
-                data: sales
-            })
-        });*/
+        queries.addSales(thisSale).then(sales => {
+            res.json(sales[0]);
+        });
     }
 };
 

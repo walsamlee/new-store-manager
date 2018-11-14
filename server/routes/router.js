@@ -3,6 +3,7 @@ import User from '../controllers/User';
 import Sales from '../controllers/Sales';
 import Product from '../controllers/Product';
 import Auth from '../middlewares/Auth';
+import queries from '../models/queries';
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.get('/login', User.login);
 
 router.get('/api/v1/products', Product.viewProducts);
 
-router.get('/api/v1/products/:productId', Product.viewProductsById);
+router.get('/api/v1/products/:productId', Product.viewProductById);
 
 router.post('/api/v1/products', Auth.verifyAdmin, Product.addProduct);
 
