@@ -22,7 +22,7 @@
     "start": "node dist/app",
     "build": "babel --presets env server -d ./dist --ignore ./node_modules",
     "dev": "(babel --presets env server -d ./dist --ignore ./node_modules) && node dist/app",
-    "test": "(babel --presets env server -d ./dist --ignore ./node_modules && dropdb --if-exists ueirllul && createdb ueirllul) && mocha dist/test/app.test.js --exit"
+    "test": "(babel --presets env server -d ./dist --ignore ./node_modules && dropdb --if-exists ueirllul && createdb ueirllul) && NODE_ENV=test && mocha dist/test/app.test.js --exit"
   },
   "keywords": [],
   "author": "",
