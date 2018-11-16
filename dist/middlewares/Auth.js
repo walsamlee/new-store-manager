@@ -7,7 +7,7 @@ var Auth = {
         if (token !== 1) {
             return res.status(401).send({
                 success: false,
-                message: 'Unauthorized to access sales route'
+                message: 'Unauthorized to access route'
             });
         }
 

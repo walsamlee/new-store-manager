@@ -73,7 +73,6 @@ describe('CRUD store manager', function () {
     it('Add product', function (done) {
         (0, _supertest2.default)(_app2.default).post('/api/v1/products').send(_testdata2.default.product).set('Accept', 'application/json').expect('Content-Type', /json/).expect(401).end(function (err, response) {
             if (err) throw err;else {
-                console.log(response.body);
                 (0, _chai.expect)(response.body).to.be.a('object');
             }
         });

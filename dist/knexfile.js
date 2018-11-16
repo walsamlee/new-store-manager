@@ -8,7 +8,7 @@ module.exports = {
     },
     test: {
         client: 'pg',
-        connection: 'postgres://localhost/tester-knex-store-manager'
+        connection: 'postgres://lzozyytr:7KV2XZHhNiDzFU-IN4IQtVmCITXwLv7F@elmer.db.elephantsql.com:5432/lzozyytr'
     },
     production: {
         client: 'pg',

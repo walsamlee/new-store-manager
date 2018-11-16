@@ -69,7 +69,6 @@ describe('CRUD store manager', () => {
             .end((err, response) => {
                 if(err) throw err;
                 else {
-                    console.log(response.body)
                     expect(response.body).to.be.a('object');
                 }
             })
