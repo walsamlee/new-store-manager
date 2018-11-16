@@ -20,6 +20,10 @@ var _Auth = require('../middlewares/Auth');
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
+var _queries = require('../models/queries');
+
+var _queries2 = _interopRequireDefault(_queries);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
@@ -33,7 +37,7 @@ router.get('/login', _User2.default.login);
 
 router.get('/api/v1/products', _Product2.default.viewProducts);
 
-router.get('/api/v1/products/:productId', _Product2.default.viewProductsById);
+router.get('/api/v1/products/:productId', _Product2.default.viewProductById);
 
 router.post('/api/v1/products', _Auth2.default.verifyAdmin, _Product2.default.addProduct);
 

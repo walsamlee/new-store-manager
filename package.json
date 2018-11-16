@@ -6,6 +6,7 @@
   "dependencies": {
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "knex": "^0.15.2",
     "pg": "^7.6.1"
   },
   "devDependencies": {
@@ -14,12 +15,14 @@
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
+    "node-mocks-http": "^1.7.3",
     "supertest": "^3.3.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/app",
-    "build": "babel --presets env server -d ./dist --ignore ./node_modules"
+    "build": "babel --presets env server -d ./dist --ignore ./node_modules",
+    "dev": "(babel --presets env server -d ./dist --ignore ./node_modules) && node dist/app",
+    "test": "(babel --presets env server -d ./dist --ignore ./node_modules && dropdb --if-exists tester-knex-store-manager && createdb tester-knex-store-manager) && mocha dist/test/app.test.js --exit"
   },
   "keywords": [],
   "author": "",

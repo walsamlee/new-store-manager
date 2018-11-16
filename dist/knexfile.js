@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
 
     development: {
@@ -11,6 +13,6 @@ module.exports = {
     production: {
         client: 'pg',
         connection: process.env.DATABASE_URL
-    },
+    }
 
 };
