@@ -6,7 +6,7 @@ module.exports = {
     },
     test: {
         client: 'pg',
-        connection: 'postgres://lzozyytr:7KV2XZHhNiDzFU-IN4IQtVmCITXwLv7F@elmer.db.elephantsql.com:5432/lzozyytr'
+        connection: 'postgres://ueirllul:0_cJHKky9vNlO0iNVvre6IAruhiWOEsV@baasu.db.elephantsql.com:5432/ueirllul'
     },
     production: {
         client: 'pg',
