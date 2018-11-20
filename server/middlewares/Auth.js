@@ -1,29 +1,68 @@
+import jwt from 'jsonwebtoken';
 
 const Auth = {
+    verifyToken(req, res, next) {
+        const token = req.headers.token;
+        
+        jwt.verify(token, 'theadminisgreat', (err, decoded) => {
+            if(err) {
+                console.log(err);
+                return res.json({
+                    message: 'Invalid token'
+                });
+            }
+            req.userData = decoded
+
+            next();
+          });
+    },
+
     verifyAdmin(req, res, next) {
-        const token = parseInt(req.headers.token, 10);
+        const token = req.headers.token;
 
-        if (token !== 1) {
-            return res.status(401).send({
-                success: false,
-                message: 'Unauthorized to access route'
-            })
-        }
+        jwt.verify(token, 'theadminisgreat', (err, decoded) => {
+            if(err) {
+                console.log(err);
+                return res.json({
+                    message: 'Invalid token'
+                });
+            }
 
-        next();
+            if(decoded) {
+                if(decoded.previlledge !== 1) {
+                    return res.status(401).json({
+                        message: 'Unauthorized to access this route'
+                    })
+                }
+            }
+            req.userData = decoded
+
+            next();
+          });
     },
 
     verifyAttendant(req, res, next) {
-        const token = parseInt(req.headers.token, 10);
+        const token = req.headers.token;
 
-        if (token !== 0) {
-            return res.status(401).send({
-                success: false,
-                message: 'Unauthorized to access route'
-            })
-        }
+        jwt.verify(token, 'theadminisgreat', (err, decoded) => {
+            if(err) {
+                console.log(err);
+                return res.json({
+                    message: 'Invalid token'
+                });
+            }
 
-        next();
+            if(decoded) {
+                if(decoded.previlledge !== 0) {
+                    return res.status(401).json({
+                        message: 'Unauthorized to access this route'
+                    })
+                }
+            }
+            req.userData = decoded
+            
+            next();
+          });
     }
 };
 

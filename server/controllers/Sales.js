@@ -1,19 +1,18 @@
-import client from '../models/db';
 import queries from '../models/queries';
 
 const Sales = {
     viewSalesById(req, res, next) {
-        const token = parseInt(req.headers.token, 10);
+        const token = req.userData.previlledge;
         
         queries.getSalesById(req.params.salesId).then(sales => {
             if (sales) {
-                if ((token === 1) || (sales.attendant_id === req.headers.id)) {
+                if ((token === 1) || (sales.attendant_email === req.userData.email)) {
                     return res.json(sales);
-                }
-
-                return res.status(401).json({
-                            message: 'Unathourized to view sales'
-                        })
+                } else {
+                    return res.status(401).json({
+                        message: 'Unathourized to view sales'
+                    });
+                }               
             }
 
             next();
