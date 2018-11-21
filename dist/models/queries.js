@@ -31,7 +31,7 @@ module.exports = {
     getSalesById: function getSalesById(id) {
         return (0, _knex2.default)('sales').where('id', id).first();
     },
-    addUser: function addUser(user) {
+    postUser: function postUser(user) {
         return (0, _knex2.default)('users').insert(user, '*');
     },
     getUser: function getUser(email) {

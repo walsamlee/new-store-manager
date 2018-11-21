@@ -27,25 +27,25 @@ var User = {
                             email: aUser.email,
                             previlledge: aUser.previlledge
                         }, 'theadminisgreat', {
-                            expiresIn: '1d'
+                            expiresIn: '1y'
                         }, function (err, token) {
                             if (token) {
-                                return res.json(token);
+                                return res.status(200).json(token);
                             }
                             if (err) {
-                                res.json({
+                                res.status(404).json({
                                     message: 'No token available'
                                 });
                             }
                         });
                     } else {
-                        res.json({
+                        res.status(400).json({
                             message: "Wrong username or password"
                         });
                     }
                 });
             } else {
-                res.json({
+                res.status(400).json({
                     message: "Wrong username or password"
                 });
             }
@@ -67,8 +67,8 @@ var User = {
                 password: hash,
                 previlledge: previlledge
             };
-            _queries2.default.addUser(userData).then(function (user) {
-                res.json(user[0]);
+            _queries2.default.postUser(userData).then(function (user) {
+                return res.json(user[0]);
             });
         });
     }

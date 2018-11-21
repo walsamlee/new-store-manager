@@ -12,12 +12,12 @@ var Auth = {
 
         _jsonwebtoken2.default.verify(token, 'theadminisgreat', function (err, decoded) {
             if (err) {
-                console.log(err);
                 return res.json({
                     message: 'Invalid token'
                 });
             }
             req.userData = decoded;
+            res.status(200);
 
             next();
         });
@@ -29,19 +29,19 @@ var Auth = {
             if (err) {
                 console.log(err);
                 return res.json({
-                    message: 'Invalid token'
+                    message: 'Invalid token for admin'
                 });
             }
 
             if (decoded) {
                 if (decoded.previlledge !== 1) {
-                    return res.status(401).json({
+                    return res.json({
                         message: 'Unauthorized to access this route'
                     });
                 }
             }
             req.userData = decoded;
-
+            res.status(200);
             next();
         });
     },
@@ -52,19 +52,19 @@ var Auth = {
             if (err) {
                 console.log(err);
                 return res.json({
-                    message: 'Invalid token'
+                    message: 'Invalid token for attendant'
                 });
             }
 
             if (decoded) {
                 if (decoded.previlledge !== 0) {
-                    return res.status(401).json({
+                    return res.json({
                         message: 'Unauthorized to access this route'
                     });
                 }
             }
             req.userData = decoded;
-
+            res.status(200);
             next();
         });
     }

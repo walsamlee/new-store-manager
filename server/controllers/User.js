@@ -18,25 +18,25 @@ const User = {
                             },
                             'theadminisgreat',
                             {
-                                expiresIn: '1d'
+                                expiresIn: '1y'
                             }, (err, token) => {
                                 if(token) {
-                                    return res.json(token);
+                                    return res.status(200).json(token);
                                 }
                                 if(err) {
-                                    res.json({
+                                    res.status(404).json({
                                         message: 'No token available'
                                     });
                                 }
                             });
                     } else {
-                        res.json({
+                        res.status(400).json({
                             message: "Wrong username or password"
                         })
                     }
                 });    
             } else {
-                res.json({
+                res.status(400).json({
                     message: "Wrong username or password"
                 })
             } 
@@ -59,8 +59,8 @@ const User = {
                 password: hash,
                 previlledge: previlledge
             }
-            queries.addUser(userData).then(user => {
-                res.json(user[0]);
+            queries.postUser(userData).then(user => {
+                return res.json(user[0]);
             })
         });
 

@@ -47,17 +47,66 @@ var products = [{
     "minimum": 12
 }];
 
-var product = {
-    "name": "Bluegate UPS",
-    "description": "Bluegate 4KVA UPS",
+var product1 = {
+    "id": 6,
+    "name": "Polystar UPS",
+    "description": "Polystar 6KVA UPS",
     "category": "UPS",
     "quantity": 6,
-    "price": 62000,
+    "price": 68000,
     "date": "23/10/2018",
-    "minimum": 12
+    "minimum": 13
+};
+
+var product2 = {
+    "id": 7,
+    "name": "1TB Seagate SSD External Storage",
+    "description": "Seagate SSD External Storage",
+    "category": "External Storage",
+    "quantity": 6,
+    "price": 48000,
+    "date": "23/10/2018",
+    "minimum": 20
+};
+
+var user1 = {
+    "email": "store3@store.com",
+    "password": "store123",
+    "previlledge": 0
+},
+    user2 = {
+    "email": "store4@store.com",
+    "password": "store123",
+    "previlledge": 0
+};
+
+var sales = [{
+    id: null,
+    attendant_id: '1',
+    attendant_email: 'store1@store.com',
+    products: 'HP Laptop, DELL Laptop',
+    total: 200000,
+    date: '23/10/2018'
+}];
+
+var signupUser = {
+    "email": "store4@store.com",
+    "password": "$2b$10$ZUwBefo5LhxieuyGKfrhRu0Rf2WVzmEYXOIOxdY12t7HCSEzva0vC",
+    "previlledge": 0
+};
+
+var loginUser = {
+    email: "admin@store.com",
+    password: "store123"
 };
 
 module.exports = {
-    product: product,
-    products: products
+    product1: product1,
+    product2: product2,
+    products: products,
+    user1: user1,
+    user2: user2,
+    signupUser: signupUser,
+    sales: sales,
+    loginUser: loginUser
 };

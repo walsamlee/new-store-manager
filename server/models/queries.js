@@ -33,7 +33,7 @@ module.exports = {
         return knex('sales').where('id', id).first();
     },
 
-    addUser(user) {
+    postUser(user) {
         return knex('users').insert(user, '*');
     },
 

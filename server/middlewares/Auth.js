@@ -3,15 +3,15 @@ import jwt from 'jsonwebtoken';
 const Auth = {
     verifyToken(req, res, next) {
         const token = req.headers.token;
-        
+
         jwt.verify(token, 'theadminisgreat', (err, decoded) => {
             if(err) {
-                console.log(err);
                 return res.json({
                     message: 'Invalid token'
                 });
             }
             req.userData = decoded
+            res.status(200);
 
             next();
           });
@@ -24,19 +24,19 @@ const Auth = {
             if(err) {
                 console.log(err);
                 return res.json({
-                    message: 'Invalid token'
+                    message: 'Invalid token for admin'
                 });
             }
 
             if(decoded) {
                 if(decoded.previlledge !== 1) {
-                    return res.status(401).json({
+                    return res.json({
                         message: 'Unauthorized to access this route'
                     })
                 }
             }
             req.userData = decoded
-
+            res.status(200);
             next();
           });
     },
@@ -48,19 +48,19 @@ const Auth = {
             if(err) {
                 console.log(err);
                 return res.json({
-                    message: 'Invalid token'
+                    message: 'Invalid token for attendant'
                 });
             }
 
             if(decoded) {
                 if(decoded.previlledge !== 0) {
-                    return res.status(401).json({
+                    return res.json({
                         message: 'Unauthorized to access this route'
                     })
                 }
             }
             req.userData = decoded
-            
+            res.status(200);
             next();
           });
     }
