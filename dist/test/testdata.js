@@ -69,6 +69,16 @@ var product2 = {
     "minimum": 20
 };
 
+var product3 = {
+    "name": "Bluegate UPS",
+    "description": "Bluegate 4KVA UPS",
+    "category": "UPS",
+    "quantity": 6,
+    "price": 40000,
+    "date": "23/11/2018",
+    "minimum": 10
+};
+
 var user1 = {
     "email": "store3@store.com",
     "password": "store123",
@@ -103,6 +113,7 @@ var loginUser = {
 module.exports = {
     product1: product1,
     product2: product2,
+    product3: product3,
     products: products,
     user1: user1,
     user2: user2,

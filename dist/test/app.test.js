@@ -45,7 +45,7 @@ describe('CRUD store manager', function () {
         });
     });
 
-    it('Show all products', function (done) {
+    it('test GET /api/v1/products route', function (done) {
         (0, _supertest2.default)(_app2.default).get('/api/v1/products').set('Accept', 'application/json').expect('Content-Type', /json/).expect(200).end(function (err, response) {
             if (err) throw err;else {
                 (0, _chai.expect)(response.body).to.be.a('array');
@@ -56,7 +56,7 @@ describe('CRUD store manager', function () {
         });
     });
 
-    it('Show product by id', function (done) {
+    it('test GET /api/v1/products/:productId route', function (done) {
         (0, _supertest2.default)(_app2.default).get('/api/v1/products/1').set('Accept', 'application/json').expect('Content-Type', /json/).expect(200).end(function (err, response) {
             if (err) throw err;else {
                 (0, _chai.expect)(response.body).to.be.a('object');
@@ -74,7 +74,7 @@ describe('CRUD store manager', function () {
         });
     });
 
-    it('test /api/v1/products route', function (done) {
+    it('test POST /api/v1/products route', function (done) {
         (0, _supertest2.default)(_app2.default).post('/api/v1/products').send(_testdata2.default.product1).set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).expect(200).end(function (err, response) {
             if (err) throw err;else {
                 (0, _chai.expect)(response.body).to.be.a('object');
@@ -85,7 +85,7 @@ describe('CRUD store manager', function () {
         });
     });
 
-    it('verifies admin token is decodable', function (done) {
+    it('test verifyToken function for admin', function (done) {
         var adminTestDecode = {
             "email": "admin@store.com",
             "previlledge": 1,
@@ -108,7 +108,7 @@ describe('CRUD store manager', function () {
         done();
     });
 
-    it('verifies attendant token is decodable', function (done) {
+    it('test verifyToken function for attendant', function (done) {
         var adminTestDecode = {
             "email": "store2@store.com",
             "previlledge": 0,
@@ -131,7 +131,7 @@ describe('CRUD store manager', function () {
         done();
     });
 
-    it('verifies admin previlledge is equal to 1', function (done) {
+    it('test verifyAdmin function', function (done) {
         var req = _nodeMocksHttp2.default.createRequest({
             headers: {
                 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74"
@@ -148,7 +148,7 @@ describe('CRUD store manager', function () {
         done();
     });
 
-    it('verifies attendant previlledge is equal to 0', function (done) {
+    it('test verifyAttendant function', function (done) {
         var req = _nodeMocksHttp2.default.createRequest({
             headers: {
                 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN0b3JlMkBzdG9yZS5jb20iLCJwcmV2aWxsZWRnZSI6MCwiaWF0IjoxNTQyODExMTA3LCJleHAiOjE1NzQzNjg3MDd9.7VKS-StyyrzKGRBNerHFqZY_4J62FpFPDaBQrdluxXw"
@@ -178,7 +178,7 @@ describe('CRUD store manager', function () {
         done();
     });
 
-    it('should return sales', function (done) {
+    it('test GET /api/v1/sales route', function (done) {
         (0, _supertest2.default)(_app2.default).get('/api/v1/sales').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-type', /json/).expect(200).end(function (err, response) {
             if (err) throw err;else {
                 (0, _chai.expect)(response.body).to.be.a('array');
@@ -189,7 +189,7 @@ describe('CRUD store manager', function () {
         });
     });
 
-    it('test /auth/signup route', function (done) {
+    it('test POST /auth/signup route', function (done) {
         (0, _supertest2.default)(_app2.default).post('/auth/signup').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).send(_testdata2.default.user2).end(function (err, response) {
             if (err) throw err;else {
                 (0, _chai.expect)(response.body.email).to.deep.equal(_testdata2.default.signupUser.email);
@@ -215,7 +215,7 @@ describe('CRUD store manager', function () {
         done();
     });
 
-    it('test /auth/login function', function (done) {
+    it('test POST /auth/login function', function (done) {
         (0, _supertest2.default)(_app2.default).post('/auth/login').send(_testdata2.default.loginUser).set('Accept', 'application/json').expect('Content-type', /json/).expect(200).end(function (err, response) {
             // console.log(response.body);
             if (err) {
@@ -223,6 +223,29 @@ describe('CRUD store manager', function () {
             } else {
                 (0, _chai.expect)(response.body).to.be.a('string');
                 (0, _chai.expect)(response.statusCode).to.be.equal(200);
+            }
+
+            done();
+        });
+    });
+
+    it('test PUT /api/v1/products/:productId route', function (done) {
+        (0, _supertest2.default)(_app2.default).put('/api/v1/products/5').send(_testdata2.default.product3).set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).expect(200).end(function (err, response) {
+            if (err) throw err;else {
+                _testdata2.default.product3.id = 5;
+                (0, _chai.expect)(response.body).to.deep.equal(_testdata2.default.product3);
+            }
+
+            done();
+        });
+    });
+
+    it('test PUT /api/v1/products/:productId route', function (done) {
+        (0, _supertest2.default)(_app2.default).delete('/api/v1/products/4').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).expect(200).end(function (err, response) {
+            if (err) throw err;else {
+                (0, _chai.expect)(response.body).to.deep.equal({
+                    message: 'Product removed'
+                });
             }
 
             done();

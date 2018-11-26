@@ -73,6 +73,16 @@ const product2 = {
     "minimum": 20
 }
 
+const product3 = {
+    "name": "Bluegate UPS",
+    "description": "Bluegate 4KVA UPS",
+    "category": "UPS",
+    "quantity": 6,
+    "price": 40000,
+    "date": "23/11/2018",
+    "minimum": 10
+}
+
 const 
     user1 = {
         "email": "store3@store.com",
@@ -110,6 +120,7 @@ const loginUser = {
 module.exports = {
     product1,
     product2,
+    product3,
     products,
     user1,
     user2,
