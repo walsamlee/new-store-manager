@@ -1,9 +1,5 @@
 'use strict';
 
-var _db = require('../models/db');
-
-var _db2 = _interopRequireDefault(_db);
-
 var _queries = require('../models/queries');
 
 var _queries2 = _interopRequireDefault(_queries);
@@ -12,17 +8,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Sales = {
     viewSalesById: function viewSalesById(req, res, next) {
-        var token = parseInt(req.headers.token, 10);
+        var token = req.userData.previlledge;
 
         _queries2.default.getSalesById(req.params.salesId).then(function (sales) {
             if (sales) {
-                if (token === 1 || sales.attendant_id === req.headers.id) {
+                if (token === 1 || sales.attendant_email === req.userData.email) {
                     return res.json(sales);
+                } else {
+                    return res.status(401).json({
+                        message: 'Unathourized to view sales'
+                    });
                 }
-
-                return res.status(401).json({
-                    message: 'Unathourized to view sales'
-                });
             }
 
             next();

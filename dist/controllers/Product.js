@@ -1,9 +1,5 @@
 'use strict';
 
-var _db = require('../models/db');
-
-var _db2 = _interopRequireDefault(_db);
-
 var _queries = require('../models/queries');
 
 var _queries2 = _interopRequireDefault(_queries);
@@ -12,7 +8,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Product = {
     addProduct: function addProduct(req, res) {
-        _queries2.default.addProduct(req.body).then(function (product) {
+        _queries2.default.postProduct(req.body).then(function (product) {
             res.json(product[0]);
         });
     },
@@ -30,7 +26,32 @@ var Product = {
             if (product) {
                 return res.json(product);
             }
+
             next();
+        });
+    },
+    editProduct: function editProduct(req, res, next) {
+        _queries2.default.putProduct(req.params.productId, req.body).then(function (product) {
+            if (product[0]) {
+                return res.json(product[0]);
+            }
+
+            next();
+        });
+    },
+    removeProduct: function removeProduct(req, res, next) {
+        _queries2.default.getProductById(req.params.productId).then(function (product) {
+            if (product) {
+                _queries2.default.deleteProduct(req.params.productId).then(function () {
+                    return res.json({
+                        message: 'Product removed'
+                    });
+                });
+            } else {
+                return res.json({
+                    message: 'Product not found'
+                });
+            }
         });
     }
 };
