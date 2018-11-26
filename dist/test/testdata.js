@@ -91,13 +91,68 @@ var user1 = {
 };
 
 var sales = [{
-    id: null,
+    id: 1,
     attendant_id: '1',
     attendant_email: 'store1@store.com',
     products: 'HP Laptop, DELL Laptop',
     total: 200000,
     date: '23/10/2018'
+}, {
+    id: 2,
+    attendant_id: '1',
+    attendant_email: 'store1@store.com',
+    products: 'Polystar UPS, 1TB Seagate SSD External Storage',
+    total: 720000,
+    date: '11/11/2018'
+}, {
+    id: 3,
+    attendant_id: '1',
+    attendant_email: 'store1@store.com',
+    products: 'iPhone XS, Samsung wear 3',
+    total: 590000,
+    date: '12/11/2018'
 }];
+
+var aSale = {
+    "id": 5,
+    "attendant_id": '1',
+    "attendant_email": "store1@store.com",
+    "date": "23/11/2018",
+    "sales": [{
+        "product": "Bluegate UPS",
+        "quantity": 2,
+        "price": 62000
+    }, {
+        "product": "Samsung wear 3",
+        "quantity": 1,
+        "price": 120000
+    }]
+};
+
+var bSale = {
+    "id": 4,
+    "attendant_id": '1',
+    "attendant_email": "store1@store.com",
+    "date": "23/11/2018",
+    "sales": [{
+        "product": "DELL Laptop",
+        "quantity": 2,
+        "price": 270000
+    }, {
+        "product": "MacBook Pro",
+        "quantity": 1,
+        "price": 970000
+    }]
+};
+
+var thisSale = {
+    id: 4,
+    attendant_id: '1',
+    attendant_email: 'store1@store.com',
+    products: 'DELL Laptop, MacBook Pro, ',
+    total: 1510000,
+    date: '23/11/2018'
+};
 
 var signupUser = {
     "email": "store4@store.com",
@@ -119,5 +174,8 @@ module.exports = {
     user2: user2,
     signupUser: signupUser,
     sales: sales,
+    aSale: aSale,
+    bSale: bSale,
+    thisSale: thisSale,
     loginUser: loginUser
 };

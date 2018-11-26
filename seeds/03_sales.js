@@ -1,6 +1,6 @@
 'use strict';
 
-var _sales = require('../dist/sales');
+var _sales = require('../server/test/salestest');
 
 var _sales2 = _interopRequireDefault(_sales);
 

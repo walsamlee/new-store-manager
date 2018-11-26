@@ -34,7 +34,8 @@ var Sales = {
         });
     },
     createSales: function createSales(req, res) {
-        var attendant_id = req.body.attendant_id,
+        var id = req.body.id,
+            attendant_id = req.body.attendant_id,
             attendant_email = req.body.attendant_email,
             date = req.body.date,
             sales = req.body.sales;
@@ -44,10 +45,11 @@ var Sales = {
 
         for (var i = 0; i < sales.length; i++) {
             products += sales[i].product + ', ';
-            total += sales[i].price;
+            total += sales[i].price * sales[i].quantity;
         };
 
         var thisSale = {
+            id: id,
             attendant_id: attendant_id,
             attendant_email: attendant_email,
             products: products,

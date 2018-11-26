@@ -26,6 +26,10 @@ var _Product = require('../controllers/Product');
 
 var _Product2 = _interopRequireDefault(_Product);
 
+var _Sales = require('../controllers/Sales');
+
+var _Sales2 = _interopRequireDefault(_Sales);
+
 var _User = require('../controllers/User');
 
 var _User2 = _interopRequireDefault(_User);
@@ -42,46 +46,6 @@ describe('CRUD store manager', function () {
             return _knex2.default.seed.run();
         }).then(function () {
             return done();
-        });
-    });
-
-    it('test GET /api/v1/products route', function (done) {
-        (0, _supertest2.default)(_app2.default).get('/api/v1/products').set('Accept', 'application/json').expect('Content-Type', /json/).expect(200).end(function (err, response) {
-            if (err) throw err;else {
-                (0, _chai.expect)(response.body).to.be.a('array');
-                (0, _chai.expect)(response.body.length).to.be.equal(_testdata2.default.products.length);
-            }
-
-            done();
-        });
-    });
-
-    it('test GET /api/v1/products/:productId route', function (done) {
-        (0, _supertest2.default)(_app2.default).get('/api/v1/products/1').set('Accept', 'application/json').expect('Content-Type', /json/).expect(200).end(function (err, response) {
-            if (err) throw err;else {
-                (0, _chai.expect)(response.body).to.be.a('object');
-                (0, _chai.expect)(response.body).to.have.property('id');
-                (0, _chai.expect)(response.body).to.have.property('name');
-                (0, _chai.expect)(response.body).to.have.property('description');
-                (0, _chai.expect)(response.body).to.have.property('category');
-                (0, _chai.expect)(response.body).to.have.property('quantity');
-                (0, _chai.expect)(response.body).to.have.property('price');
-                (0, _chai.expect)(response.body).to.have.property('date');
-                (0, _chai.expect)(response.body).to.have.property('minimum');
-            }
-
-            done();
-        });
-    });
-
-    it('test POST /api/v1/products route', function (done) {
-        (0, _supertest2.default)(_app2.default).post('/api/v1/products').send(_testdata2.default.product1).set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).expect(200).end(function (err, response) {
-            if (err) throw err;else {
-                (0, _chai.expect)(response.body).to.be.a('object');
-                (0, _chai.expect)(response.body).to.deep.equal(_testdata2.default.product1);
-            }
-
-            done();
         });
     });
 
@@ -165,64 +129,40 @@ describe('CRUD store manager', function () {
         done();
     });
 
-    it('test addProduct function', function (done) {
-        var req = _nodeMocksHttp2.default.createRequest({
-            body: _testdata2.default.product2
-        });
-
-        var res = _nodeMocksHttp2.default.createResponse();
-
-        _Product2.default.addProduct(req, res);
-        (0, _chai.expect)(res.statusCode).to.be.equal(200);
-
-        done();
-    });
-
-    it('test GET /api/v1/sales route', function (done) {
-        (0, _supertest2.default)(_app2.default).get('/api/v1/sales').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-type', /json/).expect(200).end(function (err, response) {
+    it('test GET /api/v1/products route', function (done) {
+        (0, _supertest2.default)(_app2.default).get('/api/v1/products').set('Accept', 'application/json').expect('Content-Type', /json/).expect(200).end(function (err, response) {
             if (err) throw err;else {
                 (0, _chai.expect)(response.body).to.be.a('array');
-                (0, _chai.expect)(response.body).to.deep.equal(_testdata2.default.sales);
+                (0, _chai.expect)(response.body.length).to.be.equal(_testdata2.default.products.length);
             }
 
             done();
         });
     });
 
-    it('test POST /auth/signup route', function (done) {
-        (0, _supertest2.default)(_app2.default).post('/auth/signup').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).send(_testdata2.default.user2).end(function (err, response) {
+    it('test GET /api/v1/products/:productId route', function (done) {
+        (0, _supertest2.default)(_app2.default).get('/api/v1/products/1').set('Accept', 'application/json').expect('Content-Type', /json/).expect(200).end(function (err, response) {
             if (err) throw err;else {
-                (0, _chai.expect)(response.body.email).to.deep.equal(_testdata2.default.signupUser.email);
-                (0, _chai.expect)(response.statusCode).to.be.equal(200);
                 (0, _chai.expect)(response.body).to.be.a('object');
+                (0, _chai.expect)(response.body).to.have.property('id');
+                (0, _chai.expect)(response.body).to.have.property('name');
+                (0, _chai.expect)(response.body).to.have.property('description');
+                (0, _chai.expect)(response.body).to.have.property('category');
+                (0, _chai.expect)(response.body).to.have.property('quantity');
+                (0, _chai.expect)(response.body).to.have.property('price');
+                (0, _chai.expect)(response.body).to.have.property('date');
+                (0, _chai.expect)(response.body).to.have.property('minimum');
             }
 
             done();
         });
     });
 
-    it('test addUser function', function (done) {
-        var req = _nodeMocksHttp2.default.createRequest({
-            body: _testdata2.default.user1
-        });
-
-        var res = _nodeMocksHttp2.default.createResponse();
-
-        _User2.default.addUser(req, res);
-
-        (0, _chai.expect)(res.statusCode).to.be.equal(200);
-
-        done();
-    });
-
-    it('test POST /auth/login function', function (done) {
-        (0, _supertest2.default)(_app2.default).post('/auth/login').send(_testdata2.default.loginUser).set('Accept', 'application/json').expect('Content-type', /json/).expect(200).end(function (err, response) {
-            // console.log(response.body);
-            if (err) {
-                throw err;
-            } else {
-                (0, _chai.expect)(response.body).to.be.a('string');
-                (0, _chai.expect)(response.statusCode).to.be.equal(200);
+    it('test POST /api/v1/products route', function (done) {
+        (0, _supertest2.default)(_app2.default).post('/api/v1/products').send(_testdata2.default.product1).set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).expect(200).end(function (err, response) {
+            if (err) throw err;else {
+                (0, _chai.expect)(response.body).to.be.a('object');
+                (0, _chai.expect)(response.body).to.deep.equal(_testdata2.default.product1);
             }
 
             done();
@@ -250,5 +190,101 @@ describe('CRUD store manager', function () {
 
             done();
         });
+    });
+
+    it('test addProduct function', function (done) {
+        var req = _nodeMocksHttp2.default.createRequest({
+            body: _testdata2.default.product2
+        });
+
+        var res = _nodeMocksHttp2.default.createResponse();
+
+        _Product2.default.addProduct(req, res);
+        (0, _chai.expect)(res.statusCode).to.be.equal(200);
+
+        done();
+    });
+
+    it('test GET /api/v1/sales route', function (done) {
+        (0, _supertest2.default)(_app2.default).get('/api/v1/sales').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-type', /json/).expect(200).end(function (err, response) {
+            if (err) throw err;else {
+                (0, _chai.expect)(response.body).to.be.a('array');
+            }
+
+            done();
+        });
+    });
+
+    it('test GET /api/v1/sales/:salesId route', function (done) {
+        (0, _supertest2.default)(_app2.default).get('/api/v1/sales/1').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).expect(200).end(function (err, response) {
+            if (err) throw err;else {
+                (0, _chai.expect)(response.body).to.deep.equal(_testdata2.default.sales[0]);
+            }
+
+            done();
+        });
+    });
+
+    it('test POST /api/v1/sales route', function (done) {
+        (0, _supertest2.default)(_app2.default).post('/api/v1/sales').send(_testdata2.default.bSale).set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN0b3JlMkBzdG9yZS5jb20iLCJwcmV2aWxsZWRnZSI6MCwiaWF0IjoxNTQyODExMTA3LCJleHAiOjE1NzQzNjg3MDd9.7VKS-StyyrzKGRBNerHFqZY_4J62FpFPDaBQrdluxXw').expect('Content-Type', /json/).expect(200).end(function (err, response) {
+            if (err) throw err;else {
+                (0, _chai.expect)(response.body).to.deep.equal(_testdata2.default.thisSale);
+            }
+
+            done();
+        });
+    });
+
+    it('test createSales function', function (done) {
+        var req = _nodeMocksHttp2.default.createRequest({
+            body: _testdata2.default.aSale
+        });
+
+        var res = _nodeMocksHttp2.default.createResponse();
+
+        _Sales2.default.createSales(req, res);
+        (0, _chai.expect)(res.statusCode).to.be.equal(200);
+
+        done();
+    });
+
+    it('test POST /auth/signup route', function (done) {
+        (0, _supertest2.default)(_app2.default).post('/auth/signup').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).send(_testdata2.default.user2).end(function (err, response) {
+            if (err) throw err;else {
+                (0, _chai.expect)(response.body.email).to.deep.equal(_testdata2.default.signupUser.email);
+                (0, _chai.expect)(response.statusCode).to.be.equal(200);
+                (0, _chai.expect)(response.body).to.be.a('object');
+            }
+
+            done();
+        });
+    });
+
+    it('test POST /auth/login function', function (done) {
+        (0, _supertest2.default)(_app2.default).post('/auth/login').send(_testdata2.default.loginUser).set('Accept', 'application/json').expect('Content-type', /json/).expect(200).end(function (err, response) {
+            // console.log(response.body);
+            if (err) {
+                throw err;
+            } else {
+                (0, _chai.expect)(response.body).to.be.a('string');
+                (0, _chai.expect)(response.statusCode).to.be.equal(200);
+            }
+
+            done();
+        });
+    });
+
+    it('test addUser function', function (done) {
+        var req = _nodeMocksHttp2.default.createRequest({
+            body: _testdata2.default.user1
+        });
+
+        var res = _nodeMocksHttp2.default.createResponse();
+
+        _User2.default.addUser(req, res);
+
+        (0, _chai.expect)(res.statusCode).to.be.equal(200);
+
+        done();
     });
 });
