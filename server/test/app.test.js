@@ -267,7 +267,7 @@ describe('CRUD store manager', () => {
             });
     });
 
-    it('test PUT /api/v1/products/:productId route', (done) => {
+    it('test DELETE /api/v1/products/:productId route', (done) => {
         request(app)
             .delete('/api/v1/products/4')
             .set('Accept', 'application/json')

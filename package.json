@@ -16,16 +16,19 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
     "mocha": "^5.2.0",
     "node-mocks-http": "^1.7.3",
+    "nyc": "^13.1.0",
     "supertest": "^3.3.0"
   },
   "scripts": {
     "start": "node dist/app",
     "build": "babel --presets env server -d ./dist --ignore ./node_modules",
     "dev": "(babel --presets env server -d ./dist --ignore ./node_modules) && node dist/app",
-    "test": "(babel --presets env server -d ./dist --ignore ./node_modules && dropdb --if-exists ueirllul && createdb ueirllul) && NODE_ENV=test mocha dist/test/app.test.js --exit",
-    "testlocal": "(babel --presets env server -d ./dist --ignore ./node_modules && dropdb --if-exists test-knex-store-manager && createdb test-knex-store-manager) && NODE_ENV=testlocal mocha dist/test/app.test.js --exit"
+    "test": "(babel --presets env server -d ./dist --ignore ./node_modules && dropdb --if-exists ueirllul && createdb ueirllul) && NODE_ENV=test nyc mocha dist/test/app.test.js --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "testlocal": "(babel --presets env server -d ./dist --ignore ./node_modules && dropdb --if-exists test-knex-store-manager && createdb test-knex-store-manager) && NODE_ENV=testlocal nyc mocha dist/test/app.test.js --exit"
   },
   "keywords": [],
   "author": "",

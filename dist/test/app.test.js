@@ -240,7 +240,7 @@ describe('CRUD store manager', function () {
         });
     });
 
-    it('test PUT /api/v1/products/:productId route', function (done) {
+    it('test DELETE /api/v1/products/:productId route', function (done) {
         (0, _supertest2.default)(_app2.default).delete('/api/v1/products/4').set('Accept', 'application/json').set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN0b3JlLmNvbSIsInByZXZpbGxlZGdlIjoxLCJpYXQiOjE1NDI4MTEzMDUsImV4cCI6MTU3NDM2ODkwNX0.RRhRT1BMXyI8PW-oX6Vb_llVza_v2-B28V8H-wbAF74').expect('Content-Type', /json/).expect(200).end(function (err, response) {
             if (err) throw err;else {
                 (0, _chai.expect)(response.body).to.deep.equal({
