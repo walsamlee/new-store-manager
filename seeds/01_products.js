@@ -1,6 +1,6 @@
 'use strict';
 
-var _products = require('../producttest');
+var _products = require('../server/test/producttest');
 
 var _products2 = _interopRequireDefault(_products);
 

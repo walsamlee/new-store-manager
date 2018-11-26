@@ -5,5 +5,5 @@ module.exports = [{
     attendant_email: "store1@store.com",
     products: "HP Laptop, DELL Laptop",
     total: 200000,
-    date: "23/10/2018"
+    date: "23/11/2018"
 }];

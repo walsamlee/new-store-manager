@@ -22,6 +22,16 @@
     "nyc": "^13.1.0",
     "supertest": "^3.3.0"
   },
+  "nyc": {
+    "exclude": [
+      "dist/controllers",
+      "dist/migrations",
+      "dist/seeds",
+      "migrations",
+      "seeds",
+      "server/*"
+    ]
+  },
   "scripts": {
     "start": "node dist/app",
     "build": "babel --presets env server -d ./dist --ignore ./node_modules",
