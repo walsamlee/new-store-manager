@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Store Manager - Edit Products</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="js/dashboard.js"></script>
+    <script src="js/editproduct.js"></script>
+</head>
+<body>
+    <div class="main">       
+        <div class="header">
+            <div class="brand">
+                <h1>Store Manager</h1>
+            </div>
+            <div class="cart">
+                <a href="#">
+                    <div  class="cart-icon">
+                        <h3><i class="fas fa-shopping-cart"></i> Cart</h3>
+                    </div>
+                    <div class="cart-num">
+                        <h3>0</h3>
+                    </div>
+                </a>
+            </div>
+        </div> 
+        <div class="navigation-bar">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#">Electronics</a>
+                <a href="#">Computers</a>
+                <a href="#">Phones</a>
+                <a href="#">Accessories</a>
+                <a href="#">More...</a>
+            </nav>
+            <div class="search">
+                <form action="#">
+                    <input type="search" name="search" placeholder="Search the shop">
+                    <input type="submit" value="Go">
+                </form>
+            </div>
+        </div>  
+        <div class="container">
+            <div id="admsb" class="admin-sidebar">
+                <div class="sidebar-menu">
+                    <a href="addproduct.html">Add Product</a> 
+                    <a id="sidebar-active" href="editproduct.html">Edit Product</a>                        
+                    <a href="deleteproduct.html">Delete Product</a>                  
+                    <a href="#">View Sales</a>                          
+                    <a href="#">Add Attendant</a>                        
+                    <a href="#">Edit Attendant</a>                        
+                    <a href="#">Delete Attendant</a>
+                    <a href="#">Edit Attendant</a> 
+                    <hr>
+                    <a href="#">Logout <i class="fas fa-sign-out-alt"></i></a>                       
+                </div>
+            </div>
+            
+            <div id="dshbd" class="dashboard">
+                <div class="edit-product">
+                    <form id="edit-product-form">
+                        <table class="form-table">
+                            <tr>
+                                <td class="label"><label for="product">Select Product</label></td>
+                                <td>
+                                    <select id="name-select" class="form-text" name="product">
+                                        <option class="form-text" value="options"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="id">Image: </label></td>
+                                <td><input id="image" type="text" class="form-text" name="image"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="id">ID: </label></td>
+                                <td><input id="id" type="text" class="form-text" name="id" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="name">Name: </label></td>
+                                <td><input id="name" type="text" class="form-text" name="name"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="description">Description: </label></td>
+                                <td><input id="description" type="text" class="form-text" name="description"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="category">Category: </label></td>
+                                <td><input id="category" type="text" class="form-text" name="category"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="quantity">Quantity: </label></td>
+                                <td><input id="quantity" type="number" min="1" class="form-text" name="quantity"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="price">Price: </label></td>
+                                <td><input id="price" type="text" class="form-text" name="price"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="date">Date: </label></td>
+                                <td><input id="date" type="date" min="2018-11-01" class="form-text" name="date"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="minimum">Stock Minimum: </label></td>
+                                <td><input id="minimum" type="number" min="1" class="form-text" name="minimum"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="button" class="btn" value="Submit" onclick="editproduct(this.form)">
+                                    <input type="reset" class="btn" value="Reset">
+                                    <input type="button" class="btn" value="Cancel">
+                                </td>
+                            </tr>
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+        </div>     
+    </div>
+</body>
+<footer>
+    <div class="footer">
+        <p>Powered by SammyLee &copy; 2018</p>
+    </div>
+</footer>
+</html>

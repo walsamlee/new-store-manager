@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <FORM NAME="myform" ACTION="" METHOD="GET">
+                Enter something in the box: <BR>
+                <INPUT TYPE="text" NAME="inputbox" VALUE=""><P>
+                <INPUT TYPE="button" NAME="button1" Value="Read" onclick="readText(this.form)">
+                <INPUT TYPE="button" NAME="button2" Value="Write" onclick="writeText(this.form)">
+            </FORM>
+            <SCRIPT>
+                const readText = (form) => {
+                    TestVar =form.inputbox.value;
+                    alert ("You typed: " + TestVar);
+                }
+                const writeText = (form) => {
+                    form.inputbox.value = "Have a nice day!!!"
+                }
+                
+            </SCRIPT>
+</body>
+</html>
