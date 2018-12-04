@@ -8,7 +8,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Product = {
     addProduct: function addProduct(req, res) {
-        _queries2.default.postProduct(req.body).then(function (product) {
+        console.log(req.file);
+        if (!req.file) {
+            return res.json({
+                message: 'Please upload a an image file'
+            });
+        }
+        var data = {
+            image: req.file.path,
+            name: req.body.name,
+            description: req.body.description,
+            category: req.body.category,
+            quantity: req.body.quantity,
+            price: req.body.price,
+            date: req.body.date,
+            minimum: req.body.minimum
+        };
+        _queries2.default.postProduct(data).then(function (product) {
             res.json(product[0]);
         });
     },
@@ -23,6 +39,16 @@ var Product = {
     },
     viewProductById: function viewProductById(req, res, next) {
         _queries2.default.getProductById(req.params.productId).then(function (product) {
+            if (product) {
+                return res.json(product);
+            }
+
+            next();
+        });
+    },
+    viewProductByCategory: function viewProductByCategory(req, res, next) {
+        console.log(req.params.category);
+        _queries2.default.getProductByCategory(req.params.category).then(function (product) {
             if (product) {
                 return res.json(product);
             }

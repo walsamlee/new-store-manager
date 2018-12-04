@@ -1,6 +1,7 @@
 "use strict";
 
 module.exports = [{
+    image: "",
     name: "DELL Laptop",
     description: "XPS Core i7 2TB SSD",
     category: "Laptop",
@@ -9,6 +10,7 @@ module.exports = [{
     date: "23/10/2018",
     minimum: 2
 }, {
+    image: "",
     name: "MacBook Pro",
     description: "Core i9 2TB SSD",
     category: "Laptop",
@@ -17,6 +19,7 @@ module.exports = [{
     date: "23/10/2018",
     minimum: 5
 }, {
+    image: "",
     name: "Samsung wear 3",
     description: "Samsung Smart watch 3rd generation",
     category: "Smart watch",
@@ -25,6 +28,7 @@ module.exports = [{
     date: "23/10/2018",
     minimum: 7
 }, {
+    image: "",
     name: "iPhone XS",
     description: "Apple smart phone",
     category: "Samrt phone",
@@ -33,6 +37,7 @@ module.exports = [{
     date: "23/10/2018",
     minimum: 2
 }, {
+    image: "",
     name: "Bluegate UPS",
     description: "Bluegate 4KVA UPS",
     category: "UPS",

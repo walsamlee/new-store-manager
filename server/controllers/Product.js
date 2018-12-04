@@ -2,7 +2,23 @@ import queries from '../models/queries';
 
 const Product = {
     addProduct(req, res) {
-        queries.postProduct(req.body).then(product => {
+        console.log(req.file);
+        if(!req.file) {
+            return res.json({
+                message: 'Please upload a an image file'
+            });
+        }
+        const data = {
+            image: req.file.path,
+            name: req.body.name,
+            description: req.body.description,
+            category: req.body.category,
+            quantity: req.body.quantity,
+            price: req.body.price,
+            date: req.body.date,
+            minimum: req.body.minimum
+        };
+        queries.postProduct(data).then(product => {
             res.json(product[0]);
         });
     },
@@ -23,6 +39,16 @@ const Product = {
                 return res.json(product);
             }
 
+            next();
+        });
+    },
+    
+    viewProductByCategory(req, res, next) {
+        queries.getProductByCategory(req.params.category).then(product => {
+            if(product) {
+                return res.json(product);
+            }
+        
             next();
         });
     },

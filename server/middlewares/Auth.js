@@ -7,7 +7,7 @@ const Auth = {
         jwt.verify(token, 'theadminisgreat', (err, decoded) => {
             if(err) {
                 return res.json({
-                    message: 'Invalid token'
+                    message: 'Invalid token verification'
                 });
             }
             req.userData = decoded

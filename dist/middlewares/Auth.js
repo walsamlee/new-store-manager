@@ -13,7 +13,7 @@ var Auth = {
         _jsonwebtoken2.default.verify(token, 'theadminisgreat', function (err, decoded) {
             if (err) {
                 return res.json({
-                    message: 'Invalid token'
+                    message: 'Invalid token verification'
                 });
             }
             req.userData = decoded;

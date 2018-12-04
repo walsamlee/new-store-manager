@@ -13,6 +13,9 @@ module.exports = {
     getProductById: function getProductById(id) {
         return (0, _knex2.default)('products').where('id', id).first();
     },
+    getProductByCategory: function getProductByCategory(category) {
+        return (0, _knex2.default)('products').where('category', category);
+    },
     postProduct: function postProduct(product) {
         return (0, _knex2.default)('products').insert(product, '*');
     },

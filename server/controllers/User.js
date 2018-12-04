@@ -1,6 +1,9 @@
 import queries from '../models/queries';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const User = {
     login(req, res) {
@@ -8,6 +11,12 @@ const User = {
             uEmail = req.body.email,
             uPassword = req.body.password;
 
+        if(uEmail === undefined || uPassword === undefined) {
+            return res.json({
+                message: "Invalid username or password"
+            })
+        }
+        
         queries.getUser(uEmail).then(aUser => {
             if(aUser) {
                 bcrypt.compare(uPassword, aUser.password, (err, response) => {
@@ -64,6 +73,12 @@ const User = {
             })
         });
 
+    },
+
+    admin(req, res) {
+        const token = req.userData.previlledge;
+        
+        return res.json(token);
     }
 };
 

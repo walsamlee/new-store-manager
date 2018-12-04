@@ -8,6 +8,10 @@ module.exports = {
     getProductById(id) {
         return knex('products').where('id', id).first();
     },
+    
+    getProductByCategory(category) {
+        return knex('products').where('category', category);
+    },
 
     postProduct(product) {
         return knex('products').insert(product, '*');
