@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="js/dashboard.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/allproduct.js"></script>
 </head>
 <body>
@@ -30,11 +31,8 @@
         <div class="navigation-bar">
             <nav>
                 <a href="index.html">Home</a>
-                <a href="#">Electronics</a>
-                <a href="#">Computers</a>
-                <a href="#">Phones</a>
-                <a href="#">Accessories</a>
-                <a href="#">More...</a>
+                <a class="drop-down" href="javascript:void(0)" onclick="category()">Category</a>
+                <div id="categories" class="categories"></div>
             </nav>
             <div class="search">
                 <form action="#">

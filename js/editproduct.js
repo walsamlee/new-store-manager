@@ -34,8 +34,7 @@ const editproduct = (form) => {
     .then(res => res.json())
     .then(response => {
         const 
-        resName = response.name,
-        resQuantity = response.quantity;
+        resName = response.name;
         
         alert(resName + ' has been updated successfully'); 
         
@@ -67,7 +66,6 @@ if(editToken && (id === 1)) {
                 alert('Please select a product to edit');
 
                 document.getElementById("id").value = '';
-                document.getElementById("image").value = '';
                 document.getElementById("name").value = '';
                 document.getElementById("description").value = '';
                 document.getElementById("category").value = '';

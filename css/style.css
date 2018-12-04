@@ -259,6 +259,23 @@ a {
     display: none;
 }
 
+.categories {
+    display: none;
+    position: absolute;
+    background: #f9fbfd;
+    margin-top: 10px;
+    padding: 0 50px;
+}
+
+.categories a {
+    display: block;
+    position: relative;
+}
+
+.show {
+    display: block;
+}
+
 #name-par, #price-par {
     font-weight: 600;
     font-size: 18px;

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="js/dashboard.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/addproduct.js"></script>
 </head>
 <body>
@@ -30,11 +31,8 @@
         <div class="navigation-bar">
             <nav>
                 <a href="index.html">Home</a>
-                <a href="#">Electronics</a>
-                <a href="#">Computers</a>
-                <a href="#">Phones</a>
-                <a href="#">Accessories</a>
-                <a href="#">More...</a>
+                <a class="drop-down" href="javascript:void(0)" onclick="category()">Category</a>
+                <div id="categories" class="categories"></div>
             </nav>
             <div class="search">
                 <form action="#">
@@ -69,42 +67,42 @@
                 <div class="add-product">
                     <form id="product-form" method="POST" action="" enctype="multipart/form-data">
                         <table class="form-table">
-                            <tr class="label">
-                                <td class="label"><label for="image">Image</label></td>
-                                <td><input type="file" class="form-text" name="image" accept="image/png"></td>
+                            <tr>
+                                <td class="label"><label for="image">Image: </label></td>
+                                <td><input id="image" type="file" class="form-text" name="image" accept="image/png"></td>
                             </tr>
                             <tr>
                                 <td class="label"><label for="name">Name: </label></td>
-                                <td><input type="text" class="form-text" name="name"></td>
+                                <td><input type="text" id="name" class="form-text" name="name"></td>
                             </tr>
                             <tr>
                                 <td class="label"><label for="description">Description: </label></td>
-                                <td><input type="text" class="form-text" name="description"></td>
+                                <td><input type="text" id="description" class="form-text" name="description"></td>
                             </tr>
                             <tr>
                                 <td class="label"><label for="category">Category: </label></td>
-                                <td><input type="text" class="form-text" name="category"></td>
+                                <td><input type="text" id="category" class="form-text" name="category"></td>
                             </tr>
                             <tr>
                                 <td class="label"><label for="quantity">Quantity: </label></td>
-                                <td><input type="number" min="1" class="form-text" name="quantity"></td>
+                                <td><input type="number" id="quantity" min="1" class="form-text" name="quantity"></td>
                             </tr>
                             <tr>
                                 <td class="label"><label for="price">Price: </label></td>
-                                <td><input type="text" class="form-text" name="price"></td>
+                                <td><input type="text" id="price" class="form-text" name="price"></td>
                             </tr>
                             <tr>
                                 <td class="label"><label for="date">Date: </label></td>
-                                <td><input type="date" min="2018-11-01" class="form-text" name="date"></td>
+                                <td><input type="date" min="2018-11-01" id="date" class="form-text" name="date"></td>
                             </tr>
                             <tr>
                                 <td class="label"><label for="minimum">Stock Minimum: </label></td>
-                                <td><input type="number" min="1" class="form-text" name="minimum"></td>
+                                <td><input type="number" min="1" id="minimum" class="form-text" name="minimum"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type="button" class="btn" value="Add" onclick="thisAddProduct(this.form)">
+                                    <input type="button" class="btn" value="Add" onclick="thisAddProduct()">
                                     <input type="reset" class="btn" value="Reset">
                                     <input type="button" class="btn" value="Cancel">
                                 </td>
