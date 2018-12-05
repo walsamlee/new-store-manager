@@ -58,8 +58,6 @@ fetch('http://localhost:3000/api/v1/products')
             columnNode.appendChild(addToCart);
             
             display.appendChild(columnNode);
-            
-            console.log(data);
         });
     })
     .catch(err => console.log(err));

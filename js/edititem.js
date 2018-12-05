@@ -44,6 +44,10 @@ const editproduct = (form) => {
         .catch(error => console.error('Error:', error));
 };
 
+const editCancel = () => {
+    window.location = document.location.href.replace(/[^/]*$/, '') + 'singleprod.html?=' + searchId;
+};
+
 fetch(url)
     .then(res => res.json())
     .then(response => {

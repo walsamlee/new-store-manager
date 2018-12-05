@@ -1,15 +1,20 @@
 const searchParts = window.location.search.split('=');
 let searchCategory = searchParts[1];// searchCategory = searchCategory.replace('%20', ' ');
 
-console.log(searchCategory);
+const categoryH = searchCategory.replace('%20', ' ');
 
 const url = `http://localhost:3000/api/v1/products/category/${searchCategory}`;
 
 fetch(url)
     .then(res => res.json())
     .then(response => {
-        console.log(response)
-    
+        
+        const categoryTitle = document.getElementById('category-title');
+        const categoryTitleH1 = document.createElement('h2');
+        const categoryTitleH1Text = document.createTextNode(`Products by Category: ${categoryH}`);
+        categoryTitleH1.appendChild(categoryTitleH1Text);
+        categoryTitle.appendChild(categoryTitleH1);
+        
         response.forEach(data => {
             const naira = `N ${data.price}`;
             const available = `Available in stock: ${data.quantity}`;

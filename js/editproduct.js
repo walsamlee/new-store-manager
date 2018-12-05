@@ -43,6 +43,10 @@ const editproduct = (form) => {
     .catch(error => console.error('Error:', error));
 };
 
+const editCancel = () => {
+    window.location = document.location.href.replace(/[^/]*$/, '') + 'index.html';
+};
+
 if(editToken && (id === 1)) {
     fetch('http://localhost:3000/api/v1/products')
     .then(res => res.json())

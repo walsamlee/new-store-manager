@@ -32,3 +32,7 @@ const thisAddProduct = () => {
         alert('Unauthorized to perform this operation!');
     }
 };
+
+const addCancel = () => {
+    window.location = document.location.href.replace(/[^/]*$/, '') + 'index.html';
+};

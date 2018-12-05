@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Store Manager - Product Category</title>
+    <title>Store Manager - View Sales</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="js/dashboard.js"></script>
     <script src="js/menu.js"></script>
-    <script src="js/category.js"></script>
+    <script src="js/viewsales.js"></script>
 </head>
 <body>
 <div class="main">
@@ -30,7 +30,7 @@
     </div>
     <div class="navigation-bar">
         <nav>
-            <a href="index.html">Home</a>
+            <a href="index.html">All Products</a>
             <a class="drop-down" href="javascript:void(0)" onclick="category()">Category</a>
             <div id="categories" class="categories"></div>
         </nav>
@@ -47,7 +47,7 @@
                 <a href="addproduct.html">Add Product</a>
                 <a href="editproduct.html">Edit Product</a>
                 <a href="deleteproduct.html">Delete Product</a>
-                <a href="viewsales.html">View Sales</a>
+                <a id="sidebar-active" href="viewsales.html">View Sales</a>
                 <a href="#">Add Attendant</a>
                 <a href="#">Edit Attendant</a>
                 <a href="#">Delete Attendant</a>
@@ -64,10 +64,23 @@
             </div>
         </div>
         <div id="dshbd" class="dashboard">
-            <div id="category-title" class="category-title">
+            <div class="sales">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Attendant Email</th>
+                            <th>Attendant ID</th>
+                            <th>Date</th>
+                            <th>Sales ID</th>
+                            <th>Products</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sales-display">
 
-            </div>
-            <div id="display" class="product">
+                    </tbody>
+                </table>
 
             </div>
         </div>

@@ -11,18 +11,22 @@ window.onclick = (event) => {
 fetch('http://localhost:3000/api/v1/products')
 .then(res => res.json())
 .then(response => {
-    let count = 0;
+    let tempArr = [];
     response.forEach(data => {
-        count ++;
+        tempArr.push(data.category);
+    });
+    
+    const categorySet = [...new Set(tempArr)];
+    
+    for(let i = 0; i < categorySet.length; i++) {
         const menu = document.createElement("a");
-        const menuText = document.createTextNode(data.category);
-        
+        const menuText = document.createTextNode(categorySet[i]);
+    
         menu.appendChild(menuText);
-        menu.href = document.location.href.replace(/[^/]*$/, '') + 'category.html?=' + data.category;
-        
+        menu.href = document.location.href.replace(/[^/]*$/, '') + 'category.html?=' + categorySet[i];
+    
         document.getElementById('categories').appendChild(menu);
-        
-        console.log(count);
-    })
+    }
+    
 })
 .catch(err => console.log(err));

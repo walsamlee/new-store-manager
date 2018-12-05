@@ -153,6 +153,12 @@ a {
     background: #f9fbfd;
 }
 
+.dashboard h2 {
+    margin: 0;
+    padding: 15px 0 0 20px;
+    color: #555555;
+}
+
 .row {
     overflow: auto;
     width: 100%;
@@ -183,6 +189,27 @@ a {
     max-width: 100%;
     max-height: 100%;
     margin: auto;
+}
+
+.sales {
+    text-align: left;
+    padding: 10px 10px;
+}
+
+.sales table {
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #003a90;
+}
+
+.sales table th, .sales table td {
+    padding: 5px 20px;
+    border: 1px solid #003a90;
+}
+
+.sales table th {
+    background: #123f83;
+    color: #fff;
 }
 
 .container-login {
