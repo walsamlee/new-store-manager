@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Store Manager - Edit A Product</title>
+    <title>Store Manager - Add Attendant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="js/dashboard.js"></script>
     <script src="js/menu.js"></script>
-    <script src="js/edititem.js"></script>
+    <script src="js/addattendant.js"></script>
 </head>
 <body>
 <div class="main">
@@ -29,8 +29,8 @@
         </div>
     </div>
     <div class="navigation-bar">
-        <nav id="nav">
-            <a href="index.html">Home</a>
+        <nav>
+            <a href="index.html">All Products</a>
             <a class="drop-down" href="javascript:void(0)" onclick="category()">Category</a>
             <div id="categories" class="categories"></div>
         </nav>
@@ -45,66 +45,67 @@
         <div id="admsb" class="admin-sidebar">
             <div class="sidebar-menu">
                 <a href="addproduct.html">Add Product</a>
-                <a id="sidebar-active" href="editproduct.html">Edit Product</a>
+                <a href="editproduct.html">Edit Product</a>
                 <a href="deleteproduct.html">Delete Product</a>
                 <a href="viewsales.html">View Sales</a>
-                <a href="addattendant.html">Add Attendant</a>
+                <a id="sidebar-active" href="addattendant.html">Add Attendant</a>
                 <a href="editattendant.html">Edit Attendant</a>
                 <a href="#">Delete Attendant</a>
                 <hr>
                 <a href="#">Logout <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
-
         <div id="dshbd" class="dashboard">
-            <div class="edit-product">
-                <form id="edit-product-form">
+            <div class="add-attendant">
+                <form method="POST" id="create-user" name="login" action="">
                     <table class="form-table">
                         <tr>
-                            <td class="label"><label for="id">Image: </label></td>
-                            <td><input id="image" type="text" class="form-text" name="image"></td>
+                            <td class="label">
+                                <label for="email">Email Address: </label>
+                            </td>
+                            <td>
+                                <input id="email" type="email" name="email">
+                            </td>
                         </tr>
                         <tr>
-                            <td class="label"><label for="id">ID: </label></td>
-                            <td><input id="id" type="text" class="form-text" name="id" readonly></td>
+                            <td class="label">
+                                <label for="password">Password: </label>
+                            </td>
+                            <td>
+                                <input id="password" type="password" name="password" onkeyup="passwordCompare(this.form)">
+                            </td>
                         </tr>
                         <tr>
-                            <td class="label"><label for="name">Name: </label></td>
-                            <td><input id="name" type="text" class="form-text" name="name"></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><label for="description">Description: </label></td>
-                            <td><input id="description" type="text" class="form-text" name="description"></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><label for="category">Category: </label></td>
-                            <td><input id="category" type="text" class="form-text" name="category"></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><label for="quantity">Quantity: </label></td>
-                            <td><input id="quantity" type="number" min="1" class="form-text" name="quantity"></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><label for="price">Price: </label></td>
-                            <td><input id="price" type="text" class="form-text" name="price"></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><label for="date">Date: </label></td>
-                            <td><input id="date" type="date" min="2018-11-01" class="form-text" name="date"></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><label for="minimum">Stock Minimum: </label></td>
-                            <td><input id="minimum" type="number" min="1" class="form-text" name="minimum"></td>
+                            <td class="label">
+                                <label for="password2">Confirm Password: </label>
+                            </td>
+                            <td>
+                                <input id="password2" type="password" name="password2" onkeyup="passwordCompare(this.form)">
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="button" class="btn" value="Submit" onclick="editproduct(this.form)">
-                                <input type="button" class="btn" value="Cancel" onclick="editCancel()">
+                                <p id="password-compare">Password not the same</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                <label for="privilege-admin">Privilege: </label>
+                            </td>
+                            <td class="radio">
+                                <input id="privilege-admin" type="radio" name="privilege" value="admin">Admin
+                                <input id="privilege-attnd" type="radio" name="privilege" value="attendant">Attendant
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" class="btn btn-cart" value="Add" onclick="createUser(this.form)">
+                                <input type="reset" class="btn btn-cart" value="Reset">
                             </td>
                         </tr>
                     </table>
-
                 </form>
             </div>
         </div>

@@ -238,10 +238,7 @@ a {
     display: block;
     width: 100%;
     box-sizing: border-box;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding: 12px 20px 12px 20px;
     margin: 10px 0;
     font-size: 14px;
     line-height: 1.42857143;
@@ -310,6 +307,40 @@ a {
 
 #edit-item {
     display: none;
+}
+
+#create-user input[type=email], #create-user input[type=password] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px 12px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+
+#create-user .radio {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.add-attendant {
+    padding: 10px 20px;
+}
+
+.add-attendant .label {
+    width: 135px;
+}
+
+#password-compare {
+    display: none;
+    color: #ff0505;
+    background: #ffeaea;
+    padding: 5px 10px;
 }
 
 .footer {

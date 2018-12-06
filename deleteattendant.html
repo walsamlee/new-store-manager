@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Store Manager - Product Category</title>
+    <title>Store Manager - Delete Attendant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="js/dashboard.js"></script>
     <script src="js/menu.js"></script>
-    <script src="js/category.js"></script>
+    <script src="js/deleteattendant.js"></script>
 </head>
 <body>
 <div class="main">
@@ -30,7 +30,7 @@
     </div>
     <div class="navigation-bar">
         <nav>
-            <a href="index.html">Home</a>
+            <a href="index.html">All Products</a>
             <a class="drop-down" href="javascript:void(0)" onclick="category()">Category</a>
             <div id="categories" class="categories"></div>
         </nav>
@@ -50,24 +50,33 @@
                 <a href="viewsales.html">View Sales</a>
                 <a href="addattendant.html">Add Attendant</a>
                 <a href="editattendant.html">Edit Attendant</a>
-                <a href="#">Delete Attendant</a>
+                <a id="sidebar-active" href="deleteattendant.html">Delete Attendant</a>
                 <hr>
                 <a href="#">Logout <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
-        <div id="atdsb" class="attnd-sidebar">
-            <div class="sidebar-menu">
-                <a href="#">View Sales</a>
-                <a href="#">Edit Profile</a>
-                <a href="#">Logout <i class="fas fa-sign-out-alt"></i></a>
-            </div>
-        </div>
         <div id="dshbd" class="dashboard">
-            <div id="category-title" class="category-title">
-
-            </div>
-            <div id="display" class="product">
-
+            <div class="add-attendant">
+                <form method="POST" id="create-user" name="login" action="">
+                    <table class="form-table">
+                        <tr>
+                            <td class="label">
+                                <label for="email">Select Email: </label>
+                            </td>
+                            <td>
+                                <select id="email" name="email">
+                                    <option class="form-text" value="options"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" class="btn btn-cart" value="Submit" onclick="deleteUser(this.form)">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
     </div>

@@ -44,7 +44,7 @@ const editproduct = (form) => {
 };
 
 const editCancel = () => {
-    window.location = document.location.href.replace(/[^/]*$/, '') + 'index.html';
+    window.location = document.location.href.replace(/[^/]*$/, '') + 'index.html?=' + searchId;
 };
 
 if(editToken && (id === 1)) {
@@ -70,6 +70,7 @@ if(editToken && (id === 1)) {
                 alert('Please select a product to edit');
 
                 document.getElementById("id").value = '';
+                document.getElementById("image").value = '';
                 document.getElementById("name").value = '';
                 document.getElementById("description").value = '';
                 document.getElementById("category").value = '';
