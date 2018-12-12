@@ -46,6 +46,47 @@ a {
     padding: 7px 0;
 }
 
+.cart .cart-link {
+    overflow: auto;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .cart h3 {
     margin: 0;
     padding: 0;
@@ -138,7 +179,7 @@ a {
     float: left;
     width: 20%;
     min-height: 100px;
-    background: #003a90;
+    background: #123f83;
 }
 
 #sidebar-active {
@@ -269,10 +310,20 @@ a {
     padding-right: 10px;
 }
 
-#product-form input[type=reset], #product-form input[type=button], #edit-product-form input[type=button], #edit-product-form input[type=reset] {
+#product-form input[type=reset], #product-form input[type=button], #edit-product-form input[type=button], #edit-product-form input[type=reset], #add-to-cart-form input[type=button] {
     color: #fff;
     background: #003a90;
     box-shadow: inset 0 1px 3px #ddd;
+}
+
+#product-image-div {
+    float: left;
+    margin: 0 10px 0 150px;
+}
+
+.product-details {
+    float: left;
+    margin: 0 100px;
 }
 
 #single-addto {
@@ -280,6 +331,9 @@ a {
 }
 
 #admin-single-addto {
+    display: none;
+}
+#product-number {
     display: none;
 }
 
@@ -294,10 +348,6 @@ a {
 .categories a {
     display: block;
     position: relative;
-}
-
-.show {
-    display: block;
 }
 
 #name-par, #price-par {
@@ -341,6 +391,42 @@ a {
     color: #ff0505;
     background: #ffeaea;
     padding: 5px 10px;
+}
+
+#add-to-cart-form input[type=text], #add-to-cart-form input[type=number] {
+    background: #f9fbfd;
+    border: none;
+    text-align: center;
+    padding: 5px 0;
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+#add-to-cart-form #amount {
+    display: block;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 12px 20px 12px 20px;
+    margin: 10px auto;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+#add-to-cart-form #id, #add-to-cart-form #minimum {
+    display: none;
+}
+
+#add-to-cart-form #quantity {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.show {
+    display: block;
 }
 
 .footer {

@@ -16,6 +16,7 @@ if(token) {
         if(response === 1) {
             document.getElementById('admsb').style.display = "block";
             document.getElementById('dshbd').style.width = "80%";
+            document.getElementById('cart').style.display = "none";
         } else {
             document.getElementById('atdsb').style.display = "block";
             document.getElementById('dshbd').style.width = "80%";

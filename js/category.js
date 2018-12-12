@@ -50,7 +50,7 @@ fetch(url)
             } else {
                 const linkText = document.createTextNode('Add to Cart');
                 addToCart.appendChild(linkText);
-                addToCart.href = document.location.href.replace(/[^/]*$/, '') + 'singleprod.html?=' + data.id;
+                addToCart.href = document.location.href.replace(/[^/]*$/, '') + 'addtocart.html?=' + data.id;
             }
         
             if (data.image) image.src = 'http://localhost:3000/' + data.image;

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="js/dashboard.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/cart.js"></script>
     <script src="js/allproduct.js"></script>
 </head>
 <body>
@@ -17,13 +18,13 @@
             <div class="brand">
                 <h1>Store Manager</h1>
             </div>
-            <div class="cart">
+            <div id="cart" class="cart">
                 <a href="#">
                     <div  class="cart-icon">
                         <h3><i class="fas fa-shopping-cart"></i> Cart</h3>
                     </div>
                     <div class="cart-num">
-                        <h3>0</h3>
+                        <h3 id="cart-items"></h3>
                     </div>
                 </a>
             </div>
@@ -59,6 +60,7 @@
                 <div class="sidebar-menu">                 
                     <a href="#">View Sales</a>                      
                     <a href="#">Edit Profile</a>
+                    <hr>
                     <a href="#">Logout <i class="fas fa-sign-out-alt"></i></a>                        
                 </div>
             </div>

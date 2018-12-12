@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Store Manager - Add a Product to Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="js/dashboard.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/addtocart.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="header">
+        <div class="brand">
+            <h1>Store Manager</h1>
+        </div>
+        <div class="cart">
+            <div class="cart-link">
+                <a id="myBtn" href="javascript:void(0)">
+                    <div  class="cart-icon">
+                        <h3><i class="fas fa-shopping-cart"></i> Cart</h3>
+                    </div>
+                    <div class="cart-num">
+                        <h3 id="cart-items"></h3>
+                    </div>
+                </a>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Product one</p>
+                        <p>Product one</p>
+                        <p>Product one</p>
+                        <p>Product one</p>
+                        <p>Product one</p>
+                        <p>Product one</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navigation-bar">
+        <nav id="nav">
+            <a href="index.html">Home</a>
+            <a class="drop-down" href="javascript:void(0)" onclick="category()">Category</a>
+            <div id="categories" class="categories"></div>
+        </nav>
+        <div class="search">
+            <form action="#">
+                <input type="search" name="search" placeholder="Search the shop">
+                <input type="submit" value="Go">
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div id="atdsb" class="attnd-sidebar">
+            <div class="sidebar-menu">
+                <a href="#">View Sales</a>
+                <a href="#">Edit Profile</a>
+                <hr>
+                <a href="#">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+
+        <div id="dshbd" class="dashboard">
+            <div class="product">
+                <form id="add-to-cart-form">
+                    <table class="form-table">
+                        <tr>
+                            <td><input id="id" type="text" class="form-text" name="id" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input id="name" type="text" class="form-text" name="name" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input id="description" type="text" class="form-text" name="description" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input id="category" type="text" class="form-text" name="category" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="quantity">Quantity In Stock: </label>
+                                <input id="quantity" type="number" min="1" class="form-text" name="quantity" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input id="price" type="text" class="form-text" name="price" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input id="minimum" type="number" min="1" class="form-text" name="minimum" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input id="amount" type="number" min="1" class="form-text" name="amount" placeholder="Quantity to add to cart"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" class="btn" value="Add to Cart" onclick="addToCart(this.form)">
+                                <input type="button" class="btn" value="Cancel" onclick="cartCancel()">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Get the modal
+    const modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    const btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = () => {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = () => {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+<footer>
+    <div class="footer">
+        <p>Powered by SammyLee &copy; 2018</p>
+    </div>
+</footer>
+</html>

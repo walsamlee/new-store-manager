@@ -6,7 +6,6 @@ const viewWho = sessionStorage.getItem('id');
 fetch(url)
 .then(res => res.json())
 .then(response => {
-    console.log(response);
     if (response.error) {
         alert(`Product with ID ${searchId} not found`);
     } else {
@@ -40,7 +39,7 @@ fetch(url)
             const addToCartText = document.createTextNode('Add to Cart');
     
             addToCart.className = 'btn btn-cart';
-            addToCart.href = '#';
+            addToCart.href = document.location.href.replace(/[^/]*$/, '') + 'addtocart.html?=' + response.id;
     
             addToCart.appendChild(addToCartText);
     
