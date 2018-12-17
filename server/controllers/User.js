@@ -30,7 +30,10 @@ const User = {
                                 expiresIn: '1y'
                             }, (err, token) => {
                                 if(token) {
-                                    return res.status(200).json(token);
+                                    return res.status(200).json({
+                                        token: token,
+                                        email: aUser.email
+                                    });
                                 }
                                 if(err) {
                                     res.status(404).json({
@@ -67,12 +70,57 @@ const User = {
                 email: email,
                 password: hash,
                 previlledge: previlledge
-            }
+            };
             queries.postUser(userData).then(user => {
                 return res.json(user[0]);
-            })
+            });
         });
 
+    },
+    
+    removeUser(req, res) {
+        const email = req.params.email;
+        queries.deleteUser(email).then(() => {
+            res.json({
+                message: `User with email ${email} deleted successfully`
+            });
+        })
+    },
+    
+    editUser(req, res) {
+        const email = req.params.email;
+        const previlledge = req.body.previlledge;
+    
+        if(req.body.password) {
+            bcrypt.hash(req.body.password, 10, (err, hash) => {
+                if(err) {
+                    return res.json({
+                        message: err
+                    })
+                }
+        
+                const userData = {
+                    password: hash,
+                    previlledge: previlledge
+                };
+                queries.putUser(email, userData).then(user => {
+                    return res.json(user[0]);
+                })
+            });
+        } else {
+            const userData = {
+                previlledge: previlledge
+            };
+            queries.putUser(email, userData).then(user => {
+                return res.json(user[0]);
+            })
+        }
+    },
+    
+    viewUsers(req, res) {
+        queries.getUsers().then(users => {
+            return res.json(users)
+        });
     },
 
     admin(req, res) {

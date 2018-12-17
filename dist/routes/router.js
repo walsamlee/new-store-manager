@@ -56,6 +56,10 @@ router.post('/auth/signup', _Auth2.default.verifyAdmin, _User2.default.addUser);
 
 router.post('/auth/admin', _Auth2.default.verifyToken, _User2.default.admin);
 
+router.get('/auth/users', _Auth2.default.verifyAdmin, _User2.default.viewUsers);
+router.delete('/auth/users/delete/:email', _Auth2.default.verifyAdmin, _User2.default.removeUser);
+router.put('/auth/users/update/:email', _Auth2.default.verifyAdmin, _User2.default.editUser);
+
 router.get('/api/v1/products', _Product2.default.viewProducts);
 router.get('/api/v1/products/:productId', _Product2.default.viewProductById);
 router.get('/api/v1/products/category/:category', _Product2.default.viewProductByCategory);
@@ -63,8 +67,17 @@ router.post('/api/v1/products', _Auth2.default.verifyAdmin, uploads.single('imag
 router.put('/api/v1/products/:productId', _Auth2.default.verifyAdmin, _Product2.default.editProduct);
 router.delete('/api/v1/products/:productId', _Auth2.default.verifyAdmin, _Product2.default.removeProduct);
 
+router.put('/api/v1/products/sales/:productId', _Auth2.default.verifyAttendant, _Product2.default.editSalesProduct);
+
 router.get('/api/v1/sales', _Auth2.default.verifyAdmin, _Sales2.default.viewSales);
 router.get('/api/v1/sales/:salesId', _Auth2.default.verifyToken, _Sales2.default.viewSalesById);
 router.post('/api/v1/sales', _Auth2.default.verifyAttendant, _Sales2.default.createSales);
+
+router.get('/api/v1/sales/cart/:email', _Auth2.default.verifyAttendant, _Sales2.default.cart);
+router.delete('/api/v1/sales/cart/:email', _Auth2.default.verifyAttendant, _Sales2.default.removeCart);
+
+router.post('/api/v1/sales/add-to-cart', _Auth2.default.verifyAttendant, _Sales2.default.addToCart);
+router.put('/api/v1/sales/add-to-cart', _Auth2.default.verifyAttendant, _Sales2.default.updateCart);
+router.put('/api/v1/sales/add-to-cart/:email', _Auth2.default.verifyAttendant, _Sales2.default.updateCartByEmail);
 
 module.exports = router;

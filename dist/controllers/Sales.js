@@ -46,7 +46,7 @@ var Sales = {
         for (var i = 0; i < sales.length; i++) {
             products += sales[i].product + ', ';
             total += sales[i].price * sales[i].quantity;
-        };
+        }
 
         var thisSale = {
             id: id,
@@ -59,6 +59,33 @@ var Sales = {
 
         _queries2.default.addSales(thisSale).then(function (sales) {
             res.json(sales[0]);
+        });
+    },
+    addToCart: function addToCart(req, res) {
+        _queries2.default.postCart(req.body).then(function (cart) {
+            return res.json(cart[0]);
+        });
+    },
+    cart: function cart(req, res) {
+        _queries2.default.getCart(req.params.email).then(function (cart) {
+            return res.json(cart);
+        });
+    },
+    updateCart: function updateCart(req, res) {
+        _queries2.default.updateCart(req.body.email, req.body.product, req.body.cost).then(function (cart) {
+            return res.json(cart);
+        });
+    },
+    updateCartByEmail: function updateCartByEmail(req, res) {
+        _queries2.default.updateCartEmail(req.params.email, req.body.cost).then(function (cart) {
+            res.json(cart);
+        });
+    },
+    removeCart: function removeCart(req, res) {
+        _queries2.default.deleteCart(req.params.email).then(function () {
+            return res.json({
+                message: 'Cart removed'
+            });
         });
     }
 };

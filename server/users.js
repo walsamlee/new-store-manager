@@ -9,4 +9,4 @@ module.exports = [
         password: "$2b$10$ZUwBefo5LhxieuyGKfrhRu0Rf2WVzmEYXOIOxdY12t7HCSEzva0vC",
         previlledge: 0
     },
-]
+];

@@ -10,7 +10,7 @@ const Auth = {
                     message: 'Invalid token verification'
                 });
             }
-            req.userData = decoded
+            req.userData = decoded;
             res.status(200);
 
             next();
@@ -59,7 +59,7 @@ const Auth = {
                     })
                 }
             }
-            req.userData = decoded
+            req.userData = decoded;
             res.status(200);
             next();
           });

@@ -42,7 +42,10 @@ var User = {
                             expiresIn: '1y'
                         }, function (err, token) {
                             if (token) {
-                                return res.status(200).json(token);
+                                return res.status(200).json({
+                                    token: token,
+                                    email: aUser.email
+                                });
                             }
                             if (err) {
                                 res.status(404).json({
@@ -82,6 +85,48 @@ var User = {
             _queries2.default.postUser(userData).then(function (user) {
                 return res.json(user[0]);
             });
+        });
+    },
+    removeUser: function removeUser(req, res) {
+        var email = req.params.email;
+        _queries2.default.deleteUser(email).then(function () {
+            res.json({
+                message: 'User with email ' + email + ' deleted successfully'
+            });
+        });
+    },
+    editUser: function editUser(req, res) {
+        var email = req.params.email;
+        var previlledge = req.body.previlledge;
+
+        if (req.body.password) {
+            _bcrypt2.default.hash(req.body.password, 10, function (err, hash) {
+                if (err) {
+                    return res.json({
+                        message: err
+                    });
+                }
+
+                var userData = {
+                    password: hash,
+                    previlledge: previlledge
+                };
+                _queries2.default.putUser(email, userData).then(function (user) {
+                    return res.json(user[0]);
+                });
+            });
+        } else {
+            var userData = {
+                previlledge: previlledge
+            };
+            _queries2.default.putUser(email, userData).then(function (user) {
+                return res.json(user[0]);
+            });
+        }
+    },
+    viewUsers: function viewUsers(req, res) {
+        _queries2.default.getUsers().then(function (users) {
+            return res.json(users);
         });
     },
     admin: function admin(req, res) {

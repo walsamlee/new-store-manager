@@ -43,7 +43,7 @@ const Sales = {
         for (let i = 0; i < sales.length; i++) {
             products += sales[i].product + ', ';
             total += sales[i].price * sales[i].quantity;
-        };
+        }
 
         const thisSale = {
             id: id,
@@ -57,6 +57,38 @@ const Sales = {
         queries.addSales(thisSale).then(sales => {
             res.json(sales[0]);
         });
+    },
+    
+    addToCart(req, res) {
+        queries.postCart(req.body).then(cart => {
+            return res.json(cart[0]);
+        });
+    },
+    
+    cart(req, res) {
+        queries.getCart(req.params.email).then(cart => {
+            return res.json(cart);
+        })
+    },
+    
+    updateCart(req, res) {
+        queries.updateCart(req.body.email, req.body.product, req.body.cost).then(cart => {
+            return res.json(cart);
+        })
+    },
+    
+    updateCartByEmail(req, res) {
+        queries.updateCartEmail(req.params.email, req.body.cost).then(cart => {
+            res.json(cart);
+        })
+    },
+    
+    removeCart(req, res) {
+        queries.deleteCart(req.params.email).then(() => {
+            return res.json({
+                message: 'Cart removed'
+            });
+        })
     }
 };
 

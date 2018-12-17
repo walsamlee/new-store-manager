@@ -62,6 +62,16 @@ const Product = {
             next();
         });
     },
+    
+    editSalesProduct(req, res, next) {
+        queries.putSalesProduct(req.params.productId, req.body.quantity).then(product => {
+            if(product[0]) {
+                return res.json(product[0]);
+            }
+            
+            next();
+        });
+    },
 
     removeProduct(req, res, next) {
         queries.getProductById(req.params.productId).then(product => {
@@ -76,6 +86,8 @@ const Product = {
                     message: 'Product not found'
                 });
             }
+    
+            next();
         });
         
     }

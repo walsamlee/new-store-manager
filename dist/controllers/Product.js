@@ -47,7 +47,6 @@ var Product = {
         });
     },
     viewProductByCategory: function viewProductByCategory(req, res, next) {
-        console.log(req.params.category);
         _queries2.default.getProductByCategory(req.params.category).then(function (product) {
             if (product) {
                 return res.json(product);
@@ -58,6 +57,15 @@ var Product = {
     },
     editProduct: function editProduct(req, res, next) {
         _queries2.default.putProduct(req.params.productId, req.body).then(function (product) {
+            if (product[0]) {
+                return res.json(product[0]);
+            }
+
+            next();
+        });
+    },
+    editSalesProduct: function editSalesProduct(req, res, next) {
+        _queries2.default.putSalesProduct(req.params.productId, req.body.quantity).then(function (product) {
             if (product[0]) {
                 return res.json(product[0]);
             }
@@ -78,6 +86,8 @@ var Product = {
                     message: 'Product not found'
                 });
             }
+
+            next();
         });
     }
 };
