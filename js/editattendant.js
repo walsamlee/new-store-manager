@@ -15,7 +15,7 @@ const editUser = (form) => {
             previlledge: right
         };
 
-        const url = `http://localhost:3000/auth/users/update/${selectedUser}`;
+        const url = `https://crud-store-manager.herokuapp.com/auth/users/update/${selectedUser}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -27,7 +27,7 @@ const editUser = (form) => {
             .then(res => res.json())
             .then(response => {
                 alert(`User ${response.email} updated successfully`);
-                window.location = 'http://localhost:8080/store-manager/editattendant.html';
+                window.location = document.location.href.replace(/[^/]*$/, '') + 'editattendant.html';
             })
             .catch(err => console.log(err));
     }
@@ -35,7 +35,7 @@ const editUser = (form) => {
 
 const editUserToken = sessionStorage.getItem('token');
 
-fetch('http://localhost:3000/auth/users', {
+fetch('https://crud-store-manager.herokuapp.com/auth/users', {
     headers: {
         token: editUserToken
     }

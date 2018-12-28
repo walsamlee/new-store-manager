@@ -1,6 +1,6 @@
 const cartToken = sessionStorage.getItem('token');
 const cartEmail = sessionStorage.getItem('email');
-const cartUrl = `http://localhost:3000/api/v1/sales/cart/${cartEmail}`;
+const cartUrl = `https://crud-store-manager.herokuapp.com/api/v1/sales/cart/${cartEmail}`;
 
 // Get the modal
 const modal = document.getElementById("myModal");

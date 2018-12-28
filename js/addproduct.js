@@ -7,7 +7,7 @@ const thisAddProduct = () => {
     const formData = new FormData(myForm);
     
     if(thistoken && (parseInt(id) === 1)) {
-        const url = 'http://localhost:3000/api/v1/products';
+        const url = 'https://crud-store-manager.herokuapp.com/api/v1/products';
         
         fetch(url, {
             method: 'POST',

@@ -27,7 +27,7 @@ const createUser = (form) => {
             previlledge: right
         };
     
-        const url = 'http://localhost:3000/auth/signup';
+        const url = 'https://crud-store-manager.herokuapp.com/auth/signup';
         fetch(url, {
             method: 'POST',
             headers: {
@@ -39,7 +39,8 @@ const createUser = (form) => {
             .then(res => res.json())
             .then(response => {
                 alert(`User ${response.email} added successfully`);
-                window.location = 'http://localhost:8080/store-manager/addattendant.html';
+                let redirect = document.location.href.replace(/[^/]*$/, '');
+                window.location = `${redirect}addattendant.html`;
             })
             .catch(err => console.log(err));
     }

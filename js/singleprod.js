@@ -1,6 +1,6 @@
 const searchParts = window.location.search.split('=');
 const searchId = parseInt(searchParts[1], 10);
-const url = `http://localhost:3000/api/v1/products/${searchId}`;
+const url = `https://crud-store-manager.herokuapp.com/api/v1/products/${searchId}`;
 const viewWho = sessionStorage.getItem('id');
 
 fetch(url)
@@ -10,7 +10,7 @@ fetch(url)
         alert(`Product with ID ${searchId} not found`);
     } else {
         console.log(response.image);
-        if(response.image) document.getElementById('product-image').src = 'http://localhost:3000/' + response.image;
+        if(response.image) document.getElementById('product-image').src = 'https://crud-store-manager.herokuapp.com/' + response.image;
             else document.getElementById('product-image').src = 'images/default.png';
         
         document.getElementById('name-par').append(response.name);

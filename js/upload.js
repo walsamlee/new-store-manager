@@ -1,7 +1,7 @@
 const dosubmit = () => {
     const myForm = document.getElementById('upload-form');
     const formData = new FormData(myForm);
-    fetch('http://localhost:3000/upload', {
+    fetch('https://crud-store-manager.herokuapp.com/upload', {
         method: 'POST',
         body: formData
     })

@@ -8,7 +8,7 @@ window.onclick = (event) => {
     }
 };
 
-fetch('http://localhost:3000/api/v1/products')
+fetch('https://crud-store-manager.herokuapp.com/api/v1/products')
 .then(res => res.json())
 .then(response => {
     let tempArr = [];

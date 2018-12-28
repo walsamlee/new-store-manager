@@ -6,7 +6,7 @@ const thisLogin = (form) => {
         password: form.password.value
     };
 
-    const url = 'http://localhost:3000/auth/login';
+    const url = 'https://crud-store-manager.herokuapp.com/auth/login';
     
     fetch(url, {
         method: 'POST',
@@ -22,7 +22,7 @@ const thisLogin = (form) => {
         } else {
             sessionStorage.setItem("token", response.token);
             sessionStorage.setItem("email", response.email);
-            window.location = 'http://localhost:8080/store-manager/index.html';
+            window.location = document.location.href.replace(/[^/]*$/, '') + 'index.html';
         }
         
     })

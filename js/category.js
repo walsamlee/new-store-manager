@@ -3,7 +3,7 @@ let searchCategory = searchParts[1];// searchCategory = searchCategory.replace('
 
 const categoryH = searchCategory.replace('%20', ' ');
 
-const url = `http://localhost:3000/api/v1/products/category/${searchCategory}`;
+const url = `https://crud-store-manager.herokuapp.com/api/v1/products/category/${searchCategory}`;
 
 fetch(url)
     .then(res => res.json())
@@ -53,7 +53,7 @@ fetch(url)
                 addToCart.href = document.location.href.replace(/[^/]*$/, '') + 'addtocart.html?=' + data.id;
             }
         
-            if (data.image) image.src = 'http://localhost:3000/' + data.image;
+            if (data.image) image.src = 'https://crud-store-manager.herokuapp.com/' + data.image;
             else image.src = 'images/default.png';
         
             name.appendChild(nameText);

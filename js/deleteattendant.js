@@ -2,7 +2,7 @@ const deleteUser = (form) => {
     const email = document.getElementById('email');
     const selectedUser = email.options[email.selectedIndex].value;
 
-    const url = `http://localhost:3000/auth/users/delete/${selectedUser}`;
+    const url = `https://crud-store-manager.herokuapp.com/auth/users/delete/${selectedUser}`;
     fetch(url, {
         method: 'DELETE',
         headers: {
@@ -12,14 +12,14 @@ const deleteUser = (form) => {
         .then(res => res.json())
         .then(response => {
             alert(response.message);
-            window.location = 'http://localhost:8080/store-manager/deleteattendant.html';
+            window.location = document.location.href.replace(/[^/]*$/, '') + 'deleteattendant.html';
         })
         .catch(err => console.log(err));
 };
 
 const deleteUserToken = sessionStorage.getItem('token');
 
-fetch('http://localhost:3000/auth/users', {
+fetch('https://crud-store-manager.herokuapp.com/auth/users', {
     headers: {
         token: deleteUserToken
     }

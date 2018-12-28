@@ -8,7 +8,7 @@ const deleteproduct = (form) => {
     const 
     productId = parseInt(form.id.value, 10);
 
-    const url = 'http://localhost:3000/api/v1/products/' + productId;
+    const url = 'https://crud-store-manager.herokuapp.com/api/v1/products/' + productId;
     
     fetch(url, {
         method: 'DELETE',
@@ -21,13 +21,13 @@ const deleteproduct = (form) => {
     .then(response => {
         alert(response.message + ' successfully'); 
         
-        window.location = 'http://localhost:8080/store-manager/deleteproduct.html';          
+        window.location = document.location.href.replace(/[^/]*$/, '') + 'deleteproduct.html';
     })
     .catch(error => console.error('Error:', error));
 };
 
 if(deleteToken && (deleteId === 1)) {
-    fetch('http://localhost:3000/api/v1/products')
+    fetch('https://crud-store-manager.herokuapp.com/api/v1/products')
     .then(res => res.json())
     .then(response => {
         const data = response;

@@ -21,7 +21,7 @@ const editproduct = (form) => {
         minimum: form.minimum.value,
     };
 
-    const url = 'http://localhost:3000/api/v1/products/' + productId;
+    const url = 'https://crud-store-manager.herokuapp.com/api/v1/products/' + productId;
     
     fetch(url, {
         method: 'PUT',
@@ -38,7 +38,7 @@ const editproduct = (form) => {
         
         alert(resName + ' has been updated successfully'); 
         
-        window.location = 'http://localhost:8080/store-manager/editproduct.html';          
+        window.location = document.location.href.replace(/[^/]*$/, '') + 'editproduct.html';
     })
     .catch(error => console.error('Error:', error));
 };
@@ -48,7 +48,7 @@ const editCancel = () => {
 };
 
 if(editToken && (id === 1)) {
-    fetch('http://localhost:3000/api/v1/products')
+    fetch('https://crud-store-manager.herokuapp.com/api/v1/products')
     .then(res => res.json())
     .then(response => {
         const data = response;

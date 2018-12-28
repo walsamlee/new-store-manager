@@ -1,6 +1,6 @@
 const searchParts = window.location.search.split('=');
 const searchId = parseInt(searchParts[1], 10);
-const url = `http://localhost:3000/api/v1/products/${searchId}`;
+const url = `https://crud-store-manager.herokuapp.com/api/v1/products/${searchId}`;
 
 const toCartToken = sessionStorage.getItem("token");
 const toCartEmail = sessionStorage.getItem('email');
@@ -12,7 +12,7 @@ const addToCart = (form) => {
     if((amount > available) || (available <= form.minimum.value) ) {
         alert('Not enough product in stock');
     } else {
-        fetch(`http://localhost:3000/api/v1/sales/cart/${toCartEmail}`, {
+        fetch(`https://crud-store-manager.herokuapp.com/api/v1/sales/cart/${toCartEmail}`, {
             method: 'GET',
             headers: {
                 token: toCartToken
@@ -38,7 +38,7 @@ const addToCart = (form) => {
                         cost: cost
                     };
     
-                    const url3 = `http://localhost:3000/api/v1/sales/add-to-cart`;
+                    const url3 = `https://crud-store-manager.herokuapp.com/api/v1/sales/add-to-cart`;
     
                     fetch(url3, {
                         method: 'PUT',
@@ -57,7 +57,7 @@ const addToCart = (form) => {
                                 quantity: productQuantity
                             };
             
-                            fetch(`http://localhost:3000/api/v1/products/sales/${productId}`, {
+                            fetch(`https://crud-store-manager.herokuapp.com/api/v1/products/sales/${productId}`, {
                                 method: 'PUT',
                                 body: JSON.stringify(updatePayload),
                                 headers: {
@@ -84,7 +84,7 @@ const addToCart = (form) => {
                         cost: cost,
                     };
     
-                    const url4 = 'http://localhost:3000/api/v1/sales/add-to-cart';
+                    const url4 = 'https://crud-store-manager.herokuapp.com/api/v1/sales/add-to-cart';
     
                     fetch(url4, {
                         method: 'POST',
@@ -103,7 +103,7 @@ const addToCart = (form) => {
                                 quantity: productQuantity
                             };
 
-                            fetch(`http://localhost:3000/api/v1/products/sales/${productId}`, {
+                            fetch(`https://crud-store-manager.herokuapp.com/api/v1/products/sales/${productId}`, {
                                 method: 'PUT',
                                 body: JSON.stringify(updatePayload),
                                 headers: {
@@ -147,7 +147,7 @@ const cartCancel = () => {
     window.location = document.location.href.replace(/[^/]*$/, '') + 'index.html';
 };
 
-fetch(`http://localhost:3000/api/v1/products/${searchId}`)
+fetch(`https://crud-store-manager.herokuapp.com/api/v1/products/${searchId}`)
     .then(res => res.json())
     .then(response => {
         if (response.error) {

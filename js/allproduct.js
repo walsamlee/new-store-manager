@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/api/v1/products')
+fetch('https://crud-store-manager.herokuapp.com/api/v1/products')
     .then(res => res.json())
     .then(response => {
         response.forEach(data => {
@@ -39,7 +39,7 @@ fetch('http://localhost:3000/api/v1/products')
                 addToCart.href = document.location.href.replace(/[^/]*$/, '') + 'addtocart.html?=' + data.id;
             }
             
-            if (data.image) image.src = 'http://localhost:3000/' + data.image;
+            if (data.image) image.src = 'https://crud-store-manager.herokuapp.com/' + data.image;
             else image.src = 'images/default.png';
             
             name.appendChild(nameText);

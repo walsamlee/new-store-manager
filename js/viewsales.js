@@ -1,5 +1,5 @@
 const saleToken = sessionStorage.getItem('token');
-fetch('http://localhost:3000/api/v1/sales', {
+fetch('https://crud-store-manager.herokuapp.com/api/v1/sales', {
     method: 'GET',
     headers: {
         token: saleToken

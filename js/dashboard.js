@@ -1,7 +1,7 @@
 const token = sessionStorage.getItem("token");
 
 if(token) {
-    const url = 'http://localhost:3000/auth/admin';
+    const url = 'https://crud-store-manager.herokuapp.com/auth/admin';
 
     fetch(url, {
         method: 'POST',

@@ -1,6 +1,6 @@
 const searchParts = window.location.search.split('=');
 const searchId = parseInt(searchParts[1], 10);
-const url = `http://localhost:3000/api/v1/products/${searchId}`;
+const url = `https://crud-store-manager.herokuapp.com/api/v1/products/${searchId}`;
 
 const
     editToken = sessionStorage.getItem("token");
@@ -21,7 +21,7 @@ const editproduct = (form) => {
         minimum: form.minimum.value,
     };
     
-    const url = 'http://localhost:3000/api/v1/products/' + productId;
+    const url = 'https://crud-store-manager.herokuapp.com/api/v1/products/' + productId;
     
     fetch(url, {
         method: 'PUT',
