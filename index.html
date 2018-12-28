@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="js/dashboard.js"></script>
     <script src="js/menu.js"></script>
-    <script src="js/cart.js"></script>
     <script src="js/allproduct.js"></script>
 </head>
 <body>
@@ -19,7 +18,7 @@
                 <h1>Store Manager</h1>
             </div>
             <div id="cart" class="cart">
-                <a href="#">
+                <a id="myBtn" href="javascript:void(0)">
                     <div  class="cart-icon">
                         <h3><i class="fas fa-shopping-cart"></i> Cart</h3>
                     </div>
@@ -27,6 +26,14 @@
                         <h3 id="cart-items"></h3>
                     </div>
                 </a>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div id="in-cart" class="product">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div> 
         <div class="navigation-bar">
@@ -71,6 +78,7 @@
             </div>
         </div>     
     </div>
+    <script src="js/cart.js"></script>
 </body>
 <footer>
     <div class="footer">
